@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>练习简易的二级菜单</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#nav>li").click(function(){
+			if($(this).next().css("display")=="block"){
+				$(this).next().css("display","none");
+			}else{
+				$(this).next().css("display","block").sidlings(".menu","none");
+			}
+		});
+	});
+</script>
+<style type="text/css">
+ul ul{
+display: none;
+}
+li{
+list-style: none;
+}
+</style>
+</head>
+<body>
+	<ul id="nav">
+		
+		<li><a href="#" class="navLink">达内java</a></li>
+		<ul class="menu">
+			<li><a href="#">课程介绍</a></li>
+			<li><a href="#">研发团队</a></li>
+			<li><a href="#">讲师风采</a></li>
+			<li><a href="#">练习我们</a></li>
+		</ul>
+		
+		<li><a href="#" class="navLink">达内java</a></li>
+		<ul class="menu">
+			<li><a href="#">课程介绍</a></li>
+			<li><a href="#">研发团队</a></li>
+			<li><a href="#">讲师风采</a></li>
+			<li><a href="#">练习我们</a></li>
+		</ul>
+		
+		<li><a href="#" class="navLink">达内java</a></li>
+		<ul class="menu">
+			<li><a href="#">课程介绍</a></li>
+			<li><a href="#">研发团队</a></li>
+			<li><a href="#">讲师风采</a></li>
+			<li><a href="#">练习我们</a></li>
+		</ul>
+		
+		<li><a href="#" class="navLink">达内java</a></li>
+		<ul class="menu">
+			<li><a href="#">课程介绍</a></li>
+			<li><a href="#">研发团队</a></li>
+			<li><a href="#">讲师风采</a></li>
+			<li><a href="#">练习我们</a></li>
+		</ul>
+		
+	</ul>	
+</body>
+</html>

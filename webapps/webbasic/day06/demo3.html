@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js中的强制类型转换</title>
+<script type="text/javascript">
+	var n=3.14;
+	console.log(n.toString()+1);
+	var s="3.14";
+	console.log(parseInt(s));
+	console.log(parseFloat(s));
+	console.log(parseInt(""));
+	console.log(parseFloat(""));
+	</script>
+	<script type="text/javascript">
+	function fn1(){
+		var num=100;
+		console.log(typeof(num)=="number");
+		var str="abc";
+		console.log(typeof(str)=="string");
+		console.log(typeof(null));
+		console.log(typeof(undefined));
+	}
+	function fn2(){
+		console.log(isNaN(56));//f
+		console.log(isNaN("32"));//f
+		console.log(isNaN("abc"));//t
+		console.log(isNaN(""));//此处是bug
+	}
+	</script>
+</head>
+<body>
+<input type="button" value="检测typeof" onclick="fn1();">
+<input type="button" value="检测isNaN" onclick="fn2();">
+
+</body>
+</html>

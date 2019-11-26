@@ -1,0 +1,131 @@
+	jQuery:
+	
+		function bigger(){
+	//获取p的字号
+	var size=$("p").css("font-size");
+	//把16px变成可以计算的数字，去掉单位                demo1
+	size=size.replace("px","");
+	
+	//字号加大号，设置p标签的字号
+	$("p").css("font-size",++size +"px");
+}
+
+##jQuery对象详解
+				
+		##jQuery的常用选择器
+	jQuery选择器可以准确选取到你希望找到的元素
+	选择器允许你的HTML元素组或者单个元素进行操作
+//1.基本选择器
+		$("li");
+		$("#gz");
+		$(".sz");
+		$("ul li");
+		$("ul>#gz");
+		
+//2.层次选择器
+		$("#gz+");//选择他的弟弟
+		$("#gz~");//选择他的弟弟们
+		
+//3.过滤选择器                                                        ************重点记
+		  3.1基本过滤器
+		  	$("li:first");
+		  	$("li:lt(2)");下标小于2的li标签
+		  	$("li:odd");
+		  	$("li:last")
+		  	
+		  	$("li:eq(0)")
+		  	$("li:not(#gz)")
+		  	
+		  	1):first:第一行。2):last:最后一行。3):not(selector):把满足要求的选择器排除在
+		外。
+			4):even:偶数行,下标从 0 开始。
+			5):odd:奇数行,下标从 0 开始。odd
+			6):eq(index):等于下标的元素,下标从 0 开始。
+			7):gt(index):大于下标的元素,下标从 0 开始。greater
+			8):lt(index):小于下标的元素,下标从 0 开始。less-than
+			� 注意事项:过滤器前是没有空格的。是 xx:first 而不是 xx :first。
+		  
+			 3.2内容过滤器
+		  $("li:contains('州')")	//包含
+		  $("li:empty");//empty空的
+		  
+			3.3可见性过滤器
+		  	$("li:hidden");
+		  
+		  3.4属性过滤器    **不是：，是中括号   [ ]！！
+		  	<li style="..."></li>
+		  	$("li[style]")  li标签带有style属性
+		  	$("[href='#']")		带有href属性并且，值为‘#’
+		  	$("[href!='#']")	带有href属性并且，值不为‘#’
+		  	$("[href$='.jpg']")	带有href属性并且，是以‘.jpg’结束
+		  	
+		  
+		  3.5状态过滤器
+		  $("input:checked")
+		  $("input:disabled")//disabled失效的
+		  
+		  3.6表单过滤器
+		  		$(":text")	
+		  		
+//4.表单选择器
+		 1.jQuery:对内容和值的操作
+		 var str=obj.html();
+		 obj.html("<span>123</span>");		  				
+		 
+		 var str=obj.text();
+		 obj.text("123");
+		 
+		 var str=obj.val();
+		 obj.val("abc");
+		 
+		 obj.attr();
+		 
+		 2.jQuery增删节点
+		 2.1创建新节点  
+		 		var oSpan=$("<span id="az">你好</span>");
+		 2.2挂到DOM树上		
+		 	parent.append(obj);//作为  最后  一个子节点添加进来
+		 	parent.prepend(obj);//作为第一个
+		 	borther.before(obj);//作为上一个兄弟节点                                     day09~demo7       
+		 	borther.after(obj);//作为下一个兄弟节点
+		 
+		 2.3删除DOM节点
+		 		obj.remove();//删除这个节点
+		 		obj.remove(selector);//只删除满足selector条件的节点	
+		 		
+###样式操作   add  remove has(返回boolean值)??  css  toggle切换
+		obj.addClass("ok")//添加
+		obj.removeClass("样式类名");//移出指定的样式
+			obj.removeClass();//移出所有样式
+		obj.hasClass("ok");//判断是否有某个样式，返回布尔值
+		obj.toggleClass("ok")//切换样式。有了删，没了添
+		
+		obj.css("样式属性","样式的值");//设置具体的样式
+		obj.css("样式属性");//获得具体样式的值
+		
+##jQuery方法的返回值
+		##1.任何通过$得到的对象都是jQuery对象
+				1.选择器过滤器 $("p")
+				
+				2.转型：Dom-->jQuery对象  $(Dom)
+				
+				3.创建新节点	$("<p></p>")
+		   2.修改方法一般都返回jQuery对象	
+		   		obj.html("abc");
+		   		obj.attr("src","../img/06.png");
+		   		obj.addClass("red").removeClass("red")
+		   	
+		  3.查询到的元素一般都是jQuery对象
+		  		
+		  4.读取到的文字，返回值是String对象
+		  		obj.val();
+		  		obj.html();
+		  		obj.text();
+		  5.万能确认对象的方式
+		  		控制台输出，看对象结构
+		  	
+		  				
+		  				
+		   				
+				 		
+		 	

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>事件冒泡的演示</title>
+</head>
+<body>
+	<div style="border:2px solid black;height:100px; "onclick="alert('DIV');">
+		<p style="border:2px solid #f00;height:100px;" onclick="alert('p');">
+		div--p--btn
+		<input type="button" value="事件冒泡的演示" onclick="event.cancelBubble=true;alert('input');">
+		</p>
+		
+	</div>
+</body>
+</html>

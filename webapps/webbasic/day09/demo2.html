@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>DOM的操作</title>
+<script type="text/javascript">
+//页面加载事件，页面加载完毕之后被激发
+window.onload=function(){//onload装置
+	/* var p1=document.getElementById("p1");
+	var pa=document.getElementsByTagName("p");
+	var p2=pa[1];
+	console.log(pa);
+	console.log(p2); */
+	//console.log(p1);
+	//console.log(p1.nodeName);//node节点
+	//console.log(p1.nodeType);
+	var p1=document.getElementById("p1");
+	console.log(p1.innerHTML);
+	console.log(p1.innerText);
+	p1.innerText="1.<u>读写</u>节点";
+}
+ 	
+</script>
+</head>
+<body>
+	<p id="p1">1.<b>读写</b>节点</p>
+	<p id="p2">2.<b>查询</b>节点</p>
+	<p id="p3">3.<b>增删</b>节点</p>
+</body>
+</html>

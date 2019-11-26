@@ -1,0 +1,96 @@
+
+样式表的优先级问题：
+	1.浏览器默认样式（优先级最低）：
+	2：内部样式和外部样式：就近优先原则
+	3：内联样式（优先级最高）：
+
+css选择器：
+	选择器的作用就是为了选出当前页面中符合要求的一个或者多个标签
+		1.标签选择器：一般用于定义默认样式，等待被其他样式覆盖
+			h2{color:#foo}	  p{} a{} input{}
+		2.id选择器：由于一个html中id都是唯一的，所以id选择器的作用，是选取
+		当前页面中符合要求的**一个**标签
+			<h3 id="h">id选择器</h3>	
+			#h{color:#f00;}
+		3.类选择器（class选择器）：
+			<h2 class="w300">类选择器</h2>
+				.w300{width:300px;}
+		4.派生选择器：可以通过父标签找到符合要求的子、孙标签	
+		ul a{}
+		
+		5：子类选择器：根据父标签，找到符合要求的子标签
+		ul>a{}	
+$$$6:伪类选择器：-在一系列动作中添加某种样式
+1 ：hover--鼠标悬停和鼠标离开                                                                    ******
+###总结：选择器（派生，子类）写的越具体，优先级越高
+
+##css常用样式属性
+	1：布局相关属性：
+			width:      单位:px   100%
+			height:
+			
+		margin：设置外边距
+			
+			margin:10px;同时控制4个外边距的距离
+			margin:10px 20px;上下为10px，左右为20px； 
+			margin:0px auto;auto（居中） 块级标记的水平距中
+			margin:10px 20px 30px 40px;上右下左(顺时针转)
+			
+			margin-top:上外边距
+			margin-right:右外边距
+			margin-bottom:下外边距
+			margin-left:左外边距
+			
+		padding:设置内边距
+		padding：10px；4个方向都是10px；
+		padding:10px 20px  30px  40px;上右下左
+		
+		  padding-top:上内边距
+		  padding-right:右内边距
+		  padding-bottom:下内边距
+		  padding-left:左内边距
+		
+	##总结1：一个div如果不设置宽度，默认占父容器宽度的100%
+	总结2：一个div如果不设置高度，默认占父容器高度的0px；如果有内容，
+	    内容多高div就撑起多高	
+	 总结3：盒子模型，元素之间的留白，元素背景的填充范围，元素的大小
+	 这些东西的控制规定放在一起，就是盒子模型（盒子模型一般用于计算整体布局的宽度）   		
+	      
+	      一个元素占用页面的宽度计算公式：
+	      		左外边距+左边框+左内边距+内容区域宽度+右内边距+右边框+右外边距
+	      		
+	2：背景相关属性：(background) BGM
+	background-color:背景颜色
+	background-image：背景图片
+	background-repeat 背景图片的平铺方式
+	background-position：背景图片的位置
+	background-size：背景图片的大小
+	
+	##background-color:背景颜色  
+			1.颜色的值可以如下设置：
+			   1.纯英文单词，类似于red，green等
+			  2.#FFFF 6位的16进制字符串   如：# 00 66 99（红绿蓝）
+			  3.#f00 相当于# ff 00 00  
+			  4.rgb（255，255，255）；
+			  5.rgba(255,255,255,0~1);1不透明  0全透明
+			 #fff  --->白色
+			 #000     --->黑色 
+	##background-image：背景图片
+		div设置了背景图片，那么div内部的元素将会在背景图片之上显示（背景图片类似于桌布）
+	##background-repeat 背景图片的平铺方式
+		background-repeat:no-repeat;不平铺
+		background-repeat：repeat；平铺
+		background-repeat：repeat-x/y；横/纵 向平铺
+		
+  ##	background-position：背景图片的位置
+          center/top/bottom/left/right/具体数值
+     background-position：x轴 y轴；
+     	background-position：center center；x、y轴方向居中
+     	
+  ## background-size：宽、高；设置背景图片的大小
+  			 background-size: 330px 350px;
+		 	
+	3：字体相关属性：
+	4：文本属性：
+	5：边框属性：
+	6：常见复杂属性：		 

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>帐号密码验证</title>
+<script type="text/javascript">
+	function checkUser(){
+		var code=document.getElementById("username").value;
+		var span=document.getElementById("msg_user");
+		var reg=/^\w{5,10}$/;
+		if(reg.test(code)){
+			span.className="ok";
+		}else{
+			span.className="error";
+		}
+	}
+	
+</script>
+<style type="text/css">
+	.ok{
+	color:#0f0;
+	}
+	.error{
+	color:#f00;
+	}
+</style>
+</head>
+<body>
+	<form action="http://www.tmooc.cn">
+		<div>
+			帐号：<input type="text" id="username" onblur="checkUser();">
+			<span id="msg_user">5-10位数字，字母，下划线</span>
+		</div>
+		<div>
+			密码：<input type="password" id="pwd" onblur="checkPwd();">
+			<span id="msg_pwd">5-10位数字，字母，下划线</span>
+		</div>
+		<div>
+			<input type="button" value="登录">
+		</div>
+	</form>
+</body>
+</html>

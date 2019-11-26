@@ -1,0 +1,6 @@
+	面试题:
+
+3.   select sum(money) from trade where time>str_to_date('2018年2月15日','%Y年%m月%d号');
+4.   select p.name,t.money from trade t join person p on t.pid=p.id where t.money not between -100 and 100 and p.gender='女' and p.rel='亲戚' and t.time>str_to_date('2018年2月15号','%Y年%m月%d号');
+5.   select type,sum(money) from trade where money>0 group by type;
+

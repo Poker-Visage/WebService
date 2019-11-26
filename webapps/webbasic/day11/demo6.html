@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery对样式的操作</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	setInterval(function(){
+		$("p").toggleClass("red").toggleClass("big");
+	},1000);
+});
+</script>
+<style type="text/css">
+.big{
+font-size: 50px;
+font-weight: bolder;/*weight重量  */
+
+}
+.red{
+color:#f00;
+}
+</style>
+</head>
+<body>
+	<p>jQuery对样式操作提供了很友好的支持</p>
+</body>
+</html>

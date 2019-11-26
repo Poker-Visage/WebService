@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>window的常用属性</title>
+<script type="text/javascript">
+	function fn1(){
+		//跳转到目标url
+		//location.href="http://www.tmooc.cn/web/index_new.html?tedu";
+		//刷新
+		//location.reload();
+		
+		var flag=confirm("你确定你不是傻逼吗");//confirm确认窗口
+	if(flag){
+		location.href="http://www.tmooc.cn/web/index_new.html?tedu";
+	}
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="location" onclick="fn1();">
+</body>
+</html>

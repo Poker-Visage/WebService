@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js读写属性</title>
+<script type="text/javascript">
+window.onload=function(){
+	//1.通过方法读写属性
+	var oImg=document.getElementsByTagName("img")[0];
+	console.log(oImg.getAttribute("src"));//Attribute属性
+	oImg.setAttribute("src","../img/02.png");
+	//2.通过标准的属性名 读写属性
+	//className id style
+	var op=document.getElementsByTagName("p")[0];
+	console.log(op.style.color);
+	op.style.fontSize="50px";
+	//3.通过不标准属性读写，不推荐
+	//a.href   img.src  不标准属性换做方法读写,不建议用
+	console.log(oImg.src);
+}
+</script>
+</head>
+<body>
+	<img src="../img/06.png">
+	<p style="color:#f00;">标准属性就那么几个</p>
+</body>
+</html>

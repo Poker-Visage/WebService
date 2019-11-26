@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>模拟从服务器获得频道数据</title>
+
+</head>
+<body align="center">
+<ul id="ul">
+
+</ul>
+</body>
+<script type="text/javascript">
+	var oUl=document.getElementById("ul");
+	
+	//假设从服务器获取了一组数据
+	var contents=["天气预报","其人一是","法治社会","寻人启事","明星趣事"];
+	//制作一个string的模板，使用【content】占位
+	var str="<li><span><a>[content]</a></span></li>";
+	for(var i=0;i<contents.length;i++){
+		//
+		oUl.innerHTML+=str.replace("[content]",contents[i]);
+		
+	}
+	
+</script>
+</html>

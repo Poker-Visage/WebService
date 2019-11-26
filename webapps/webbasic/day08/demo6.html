@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>撤销发送</title>
+<script type="text/javascript">
+var id;
+var s=false;
+var op;
+function send(){
+	 op=document.getElementById("msg");
+	op.innerHTML="发送中。。。";
+	//推迟三秒发送
+	s=true;
+	id=setTimeout(function(){
+		op.className="ok";
+		op.innerHTML="发送成功！";
+		s=false;
+	},3000);
+}
+function cancel(){
+	
+	if(s){
+		 op=document.getElementById("msg");
+		op.className="error";
+		op.innerHTML="已撤销！";
+		clearTimeout(id);
+	}else if(!s&&op!=undefined){
+		 op=document.getElementById("msg");
+		op.className="error";
+		op.innerHTML="已发送，不能撤销！";
+	}else{
+		op=document.getElementById("msg");
+		op.className="error";
+		op.innerHTML="没事，瞎点什么！";
+	}
+	
+}
+</script>
+<style type="text/css">
+.ok{
+color:green;
+}
+.error{
+color:red;
+}
+</style>
+</head>
+<body>
+<div>
+	<input type="button" value="发送" onclick="send();">
+	<input type="button" value="撤销" onclick="cancel();">
+</div>
+<p id="msg"></p>
+</body>
+</html>

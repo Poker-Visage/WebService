@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>插入DOM节点</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	function fn1(){//追加
+		var oLi=$("<li>天津</li>");
+		$("ul").append(oLi);
+	//	$("ul").prepend(oLi);
+	
+	}
+	function fn2(){//插入
+		var oLi=$("<li>伊川</li>");	
+		//$("#gz").before(oLi);//在什么之后
+		$("#gz").after(oLi);
+	}
+	function fn3(){//删除
+		//$("gz").remove();
+	//$("li").remove("#gz");
+	$("li").remove("li:contains(州)");
+	}
+	
+</script>
+</head>
+<body>
+	<div>
+	
+		<input type="button" value="追加"  onclick="fn1();">
+		<input type="button" value="插入"  onclick="fn2();">
+		<input type="button" value="删除"  onclick="fn3();">
+		
+	</div>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>洛阳</li>
+	</ul>
+</body>
+</html>

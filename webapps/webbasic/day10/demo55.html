@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>练习计算器</title>
+<script type="text/javascript">
+	function drop(even){
+		var obj=even.target||even.srcElement;
+		if(obj.nodeName!="INPUT"){
+			return;
+		}
+		var value=obj.value;
+		var op=document.getElementById("screen");
+		if(value=="C"){
+			op.innerHTML="";
+		}else if(value=="="){
+			var cast=op.innerHTML;
+			try{
+				op.innerHTML=eval("("+cast+")");
+			}catch(e){
+				op.innerHTML="ERROR";
+			}
+		}else{
+			op.innerHTML+=value;
+		}
+	}
+</script>
+<style type="text/css">
+.vic{
+border: 4px ridge #ddd;
+margin: 40px auto;
+width: 192px;
+border-radius:3px; 
+}
+.vic p, .vic input{
+font-family: "黑体";
+font-size: 20px;
+float:left;
+border-radius:3px;
+margin:4px;  
+}
+p{
+border: 2px solid #ddd;
+width: 130px;
+height: 40px;
+overflow: hidden;
+}
+input {
+	width:40px;
+	height: 44px;
+}
+</style>
+</head>
+<body>
+	<div class="vic" onclick="drop(event)">
+	<div>
+	<p id="screen"></p>
+	<input type="button" value="C">
+	</div>
+	<div>
+	<input type="button" value="7">
+	<input type="button" value="8">
+	<input type="button" value="9">
+	<input type="button" value="/">
+	
+	<input type="button" value="4">
+	<input type="button" value="5">
+	<input type="button" value="6">
+	<input type="button" value="*">
+	
+	<input type="button" value="1">
+	<input type="button" value="2">
+	<input type="button" value="3">
+	<input type="button" value="-">
+	
+	<input type="button" value="0">
+	<input type="button" value=".">
+	<input type="button" value="=">
+	<input type="button" value="+">
+	<div style="clear:both;"></div>
+	</div>
+	</div>
+</body>
+</html>

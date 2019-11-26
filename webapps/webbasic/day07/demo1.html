@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>阶乘</title>
+<script type="text/javascript">
+function cal(){
+	var input=document.getElementById("num");
+	var num=input.value;
+	var span=document.getElementById("result");
+	console.log(span);
+	if(isNaN(num)){
+		span.innerHTML="请输入正确数字";
+	}else{
+		num=parseInt(num);
+		input.value=num;
+		if(num==0){
+			span.innerHTML=1;
+		}else if(num<0){
+			span.innerHTML="负数没有阶乘";
+		}else if(num>0){
+			var res=1;
+			for(var i=num;i;i--){
+				res*=i;
+			}
+			span.innerHTML=res;
+		}
+	}
+}
+</script>
+</head>
+<body>
+<p>n（正整数）的阶乘1*2*3....*n</p>
+<p>0的阶乘为1</p>
+<p>负数和小数没有阶乘</p>
+<input type="text" id="num">
+<input type="button" value="开始运算"  onclick="cal(); ">
+= <span id="result">结果</span>
+</body>
+</html>

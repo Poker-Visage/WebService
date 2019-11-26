@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>计算平方</title>
+<script type="text/javascript">
+function cal(){
+	//1.获取文本框内的数 value
+	//2.判断这个数是不是数字
+	//3.是数字，计算，并把结果放入span
+	//4.不是数字，span中提示用户输入错误
+    var input=document.getElementById("num");
+	var num=input.value;
+	var span=document.getElementById("result");
+	console.log(span);
+	if(num!=""){
+		if(isNaN(num)){
+			span.innerHTML="输入错误";
+		}else{
+			span.innerHTML=num*num;
+		}
+	}else{
+		span.innerHTML="请输入数字";
+	}
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="num">
+	<input type="button" value="平方" onclick="cal(); ">
+	= <span id="result">计算的结果</span>
+</body>
+</html>

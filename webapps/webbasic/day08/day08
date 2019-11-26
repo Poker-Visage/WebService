@@ -1,0 +1,110 @@
+
+		day08
+	完善form表单
+	
+		学子商城登录页表单验证
+		onsubmit="return checkUser()+checkPwd()==2;//点击提交事件
+		onblur="checkPwd();//鼠标移出事件
+##function 
+		1.js中的函数就是function对象
+		2.函数名就是指向function对象的引用
+	##3.使用函数名可以访问函数对象
+	##4.函数名后面跟上（），是调用函数
+	##5.函数的返回值	
+				5.1不定义返回值的类型
+				5.2默认返回值是undefined
+				5.3可以使用return返回具体的值
+	##6.函数的参数
+			function x(a,b){
+			return a-b;
+			}				
+		#function x(){alert(11111);}
+
+		x()
+
+		x(1,2)//不报错，
+	##总结：arguments 参数   
+			js的函数没有重载，函数被调用时，只要函数名一样，无论传入多少个参数，
+		调用的都是同一个函数对象，所以js没有重载
+		    但是可以实现和重载一样的调用方式，使用arguments
+		    
+		  	##
+		    function add(){
+		    var sum=0;
+		    for(var i=0;i<arguments.length;i++){
+		    sum+=arguments[i];
+		    }
+		    return sum;
+		    }	
+				
+##总结：js在调用函数的过程中，只检测函数名，不检测参数列表，如果参数名称匹配，则直接调用
+			可以使用arguments访问传递过来的参数列表
+	js中没有重载，如果出现相同函数名的两个函数，后一个有效
+	
+	##匿名函数，就是不给函数起名字。如果一个函数在别的地方不再被调用，就可以使用匿名函数
+	##全局函数，可用于所有的javascript对象，不需要对象调用。
+			常用全局函数： typeof（） isNaN() parseInt() parseFloat() eval()
+			
+		eval()
+			eval函数用于  计算表达式  字符串
+			   var str="2+3";
+			   eval(str);
+			 eval函数用于执行 字符串中的js代码
+			 	var str="alert(1111)";
+			 	eval(str);
+	##eval最重要的作用，是动态执行服务器传过来的js代码		
+			??eval("("+num+")")  避免错误，得这样写
+##外部对象概述
+		##	BOM和DOM		
+		##BOM  Browser Object Model 浏览器对象模型
+		##DOM  Document	 Object Model文档对象模型		
+	##总结：通过BOM，可以移动窗口，更改状态栏文本，执行其他不与页面内容发生直接联系的操作
+	。BOM不操作标签。BOM是没有标准的，却被浏览器厂商广泛支持。
+	DOM定义了访问和操作HTML的标准方法，通过对DOM 树 的操作，来实现 对html文档数据的操作							
+	
+  ##js相关的BOM操作
+  		##window表示整个浏览器窗口
+  		所有的js的全局对象，全局函数以及全局变量，都自动成为window对象的成员（window可以点出来）
+  	##window的常用属性
+  			document 窗口显示的HTML文档对象
+  			history  浏览过的历史记录对象
+  			location 窗口文件地址对象
+  			screen		屏幕对象
+  			navigator浏览器相关信息对象
+  	##window对象常用的函数
+  		1.弹出框 alert
+  		function fn1(){
+ 		//window可以省略
+ 		window.alert("你好");
+ 		}
+ 		
+ 		//2.确认框
+ 		function fn2(){
+ 		var flag=window.confirm("确认框");
+ 		console.log(flag);
+ 		}
+ 		
+ 		//##**3.输入框
+ 		function fn3(){
+ 		var str=window.prompt("请输入");
+ 		console.log(str);
+ 		}		
+ 	
+ 	
+ 	##定时器         **************************************************
+ 		主要用于网页动态时钟，倒计时，轮播图，无缝滚动，跑马灯效果
+ 	
+ 	1.周期性的定时器，以一定的时间间隔执行代码，循环往复
+ 		setInterval(exp,time);   //Interval间隔
+ 		  exp:要执行的语句，一般为匿名函数   time：时间周期，毫秒
+ 		 返回值：返回已经启动的定时器ID
+ 		 clearInterval(ID);停止定时器。ID就是上一个ID
+ 	##总结：启动定时器就相当于启动了一个子线程，当前方法fn4相当于主线程	 
+ 		  两个线程之间并发执行，相互不等待
+ 	##课堂练习，电子时钟	  
+ 	2.一次性定时器（延迟执行），在一个设定好的时间间隔之后来执行代码。
+ 		在一个设定好的时间 间隔之后来执行代码
+ 			setTimeout(exp,time);
+ 			exp:执行的代码，返回值为id
+ 			clearTimeout(id);停止
+ 					

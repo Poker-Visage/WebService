@@ -1,0 +1,46 @@
+day12：	
+	jquest方法的返回值问题
+		通过节点关系，查找节点
+			obj.children();obj.children(selector);选择器过滤器,获取直接子节点
+			obj.next();obj.next(selector);下一个符合条件的弟弟     obj.nextAll();弟弟们
+			obj.prev();/obj.prev(selector);上一个符合条件的哥哥。previous上一个
+			obj.siblings();obj.siblings(selector);//算别人，不算自己      sibling兄弟
+			
+			obj.find(selector);//查询满足条件的所有后代； find发现
+			obj.parent();
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

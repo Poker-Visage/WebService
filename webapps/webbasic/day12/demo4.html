@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>模拟购物车</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	//加入购物车函数
+	function add_shoppingcart(btn){
+	//第一种获取name和price的思路
+		/* 	var tr=$(btn).parent().parent();
+		var name=tr.children().eq(0).text();//eq(),选择第一个（下标为0）
+		var price=tr.children().eq(1).text(); */
+		
+		//第二种获取name和price的思路
+		var tds=$(btn).parent().siblings();
+		var name=tds.eq(0).text();
+		var price=tds.eq(1).text();
+		
+		var new_tr=$('<tr><td>'+name+'</td><td>'+price+'</td><td><input type="button" value="-" onclick="chg(this,-1);"><input type="text" size="3" readonly value="1" ><input type="button" value="+" onclick="chg(this,1);"></td><td>'+price+'</td><td><input type="button" value="X" onclick="del(this);"></td></tr>');
+		//挂在tbody下面
+		$("#goods").append(new_tr);
+		total();
+	}
+	
+	function del(btn){
+		$(btn).parent().parent().remove();
+		total();
+	}
+	
+	function chg(btn,n){
+		var amount=0;
+		if(n>0){//点的是加号
+			amount=parseInt($(btn).prev().val());
+			$(btn).prev().val(++amount);
+		}else{
+			amount=parseInt($(btn).next().val());
+			if(amount<=1){
+				return;
+			}
+			$(btn).next().val(--amount);
+		}
+		//修改金额
+		//1.获取单价并计算金额
+		var tbs=$(btn).parent().siblings();
+		var price=parseInt(tbs.eq(1).text());
+		var money=price*amount;
+		tbs.eq(2).text(money);//tbs.eq(2)  是指第几个td
+		
+		total();
+	}
+	//2.计算总额
+	function total(){
+		var trs=$("#goods tr");
+		var sum=0;
+		for(var i=0;i<trs.length;i++){
+			//得到目标td
+			var td=trs.eq(i).children().eq(3);
+			//得到当前金额
+			var money=parseFloat(td.text());
+			//得到总价
+			sum+=money;
+		}
+		$("#total").text(sum);
+	}
+	
+</script>
+	<style type="text/css">
+		h1{
+		text-align: center;
+	}
+	table {
+	margin: 0 auto;
+	width:60%;
+	border: 2px solid #aaa;
+	border-collapse:collapse; 
+}
+		table th,table td{
+		border: 2px solid #aaa;
+		padding: 5px;
+	text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>真划算</h1>
+	<table>
+		<tr>
+			<th>商品</th>
+			<th>单价</th>
+			<th>颜色</th>
+			<th>库存</th>
+			<th>好评率</th>
+			<th>操作</th><!--th默认加粗-->	
+		</tr>
+		
+		<tr>
+			<td>苹果air</td>
+			<td>26000</td>
+			<td>白色</td>
+			<td>12</td>
+			<td>50%</td>
+			<td align="center">
+				<input type="button" value="加入购物车" onclick="add_shoppingcart(this)">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>迪奥口红</td>
+			<td>300</td>
+			<td>#520</td>
+			<td>800</td>
+			<td>99%</td>
+			<td align="center">
+				<input type="button" value="加入购物车" onclick="add_shoppingcart(this)">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>戴森</td>
+			<td>3200</td>
+			<td>红色全球限量</td>
+			<td>3</td>
+			<td>100%</td>
+			<td align="center">
+				<input type="button" value="加入购物车" onclick="add_shoppingcart(this)">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>卫龙</td>
+			<td>2</td>
+			<td>无色变态辣</td>
+			<td>500</td>
+			<td>99%</td>
+			<td align="center">
+				<input type="button" value="加入购物车" onclick="add_shoppingcart(this)">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>樱桃机械键盘</td>
+			<td>560</td>
+			<td>黑色</td>
+			<td>50</td>
+			<td>100%</td>
+			<td align="center">
+				<input type="button" value="加入购物车" onclick="add_shoppingcart(this)">
+			</td>
+		</tr>
+		
+		<tr>
+			<td>大宝sod蜜</td>
+			<td>26</td>
+			<td> 乳白色</td>
+			<td>5000</td>
+			<td>100%</td>
+			<td align="center">
+				<input type="button" value="加入购物车" onclick="add_shoppingcart(this)">
+			</td>
+		</tr>
+		
+	</table>
+	
+	<h1>购物车</h1>
+	<table>
+		<thead>
+		 <tr>
+			<th>商品</th>
+			<th>单价( 元 )</th>
+			<th>数量</th>
+			<th>金额</th>
+			<th>删除</th>
+		 </tr>
+		</thead>
+		<tbody id="goods">
+			
+		</tbody>
+		
+		<tfoot>
+			<tr>
+				<td colspan="3" align="right">总计</td>
+				<td id="total"></td>
+				<td></td>
+			</tr>
+		</tfoot>
+		
+	</table>
+	
+</body>
+</html>

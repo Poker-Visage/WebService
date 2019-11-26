@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>123学子商城，二级菜单</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+
+<script type="text/javascript">
+	$(function(){
+		$(".menu").click(function(){
+			
+			if($(this).next().css("display")=="block"){
+				//把所有的ul都关闭
+				//所有的箭头都向右
+				
+				$(".submenu").removeClass("dis").addClass("hide");
+				$(".menu").children("img").attr("src","../images/myOrder/myOrder1.png");
+			
+			}else{
+				//把所有的ul都关闭
+				//所有的箭头都向右
+				$(".submenu").removeClass("dis").addClass("hide");
+				$(".menu").children("img").attr("src","../images/myOrder/myOrder1.png");
+				//打开弟弟ul，把箭头向下
+				$(this).next().removeClass("hide").addClass("dis");
+				$(this).children("img").attr("src","../images/myOrder/myOrder2.png");
+			}
+			});
+	});	
+</script>
+
+<style type="text/css">
+*{
+margin: 0px;
+padding: 0px;
+}
+li{
+list-style: none;/*清除li的点*/
+}
+#leftsidebar_box{
+width: 160px;
+ }
+ .menu{
+ background-color: rgb(10,161,237);
+ height: 36px;
+ width: 120px;
+ color: #f5f5f5;
+ font-size: 14px;
+ font-weight: bold;
+ font-family: "黑体";
+ line-height: 36px;
+ background-repeat: no-repeat;
+ padding-left: 40px;
+ background-position: 10px center;/*垂直居中*/
+ cursor: pointer;/*鼠标悬停的时候变成手*/
+ margin-bottom: 10px;
+ 
+ }
+ .cmenu1{
+ background-image: url("../images/myOrder/myOrder.png");
+ }
+ .cmenu2{
+ background-image: url("../images/myOrder/pcenter_icon1.png");
+ 
+ }
+ .cmenu3{
+ background-image: url("../images/myOrder/pcenter_icon2.png");
+
+ }
+ .cmenu4{
+ background-image: url("../images/myOrder/pcenter_icon3.png");
+ 
+ }
+ .submenu{
+ background-color: #fff;
+ padding-left: 40px;
+ padding-bottom: 15px;
+ }
+ .submenu>li{
+ color: #808080;
+ line-height: 40px;
+ font-size: 12px;
+ 
+ }
+ .menu>img{
+ float: right;
+ margin-top: 12px;
+ margin-right: 5px;
+ }
+ 
+.dis{
+display:block;
+}
+.hide{
+display:none;
+}
+</style>
+</head>
+<body>
+   <div id="leftsidebar_box">
+      <ul>
+      <li class="menu cmenu1">我的订单
+      <img src="../images/myOrder/myOrder1.png">
+      </li>
+      <!-- 与li同级的ul是二级菜单 -->
+      <ul class="submenu hide">
+        <li>全部订单</li>
+        <li>待付款</li>
+        <li>待收款</li>
+        <li>待评价</li>
+        <li>退货退款</li>
+      </ul>
+      <li class="menu cmenu2">我的优惠券
+      <img src="../images/myOrder/myOrder1.png">
+      </li>
+      <ul class="submenu hide">
+      <li>我的优惠券</li>
+      </ul>
+       <li class="menu cmenu3">收获地址
+      <img src="../images/myOrder/myOrder1.png">
+      </li>
+      <ul class="submenu hide">
+      <li>地址管理</li>
+      </ul>
+       <li class="menu cmenu4">帐号管理
+      <img src="../images/myOrder/myOrder1.png">
+      </li>
+      <ul class="submenu hide">
+      <li>我的信息</li>
+       <li>安全管理</li>
+      </ul>
+      </ul>
+   </div>
+</body>
+</html>

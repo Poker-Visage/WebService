@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>变幻的小兵</title>
+<script type="text/javascript">
+var imgs;
+var interval;
+var n=1;
+window.onload=function(){
+	imgs=document.getElementsByTagName("img");
+	imgs[0].className="show";
+	go();
+}
+function stop(){
+	 clearInterval(interval); 
+}
+function go(){
+	 interval=setInterval(function(){
+		var index=n%imgs.length;
+		for(var i=0;i<7;i++){
+			imgs[i].className="hide";
+		}
+		for(var j=0;j<index;j++){
+			imgs[j].className="show";
+		}
+		n++;
+	},500); 
+}
+</script>
+	<style type="text/css">
+	.hide{
+	display: none;
+	}
+	.show{
+	display: inline-block;
+	}
+	div{
+	/* width:256px; */
+	 height:256px;
+	margin: 50px auto;
+	border:2px solid #f00;
+	float:left;
+	
+	}
+	/* img{
+	height:100px;
+	width:100px;
+	
+	} */
+	</style>
+</head>
+<body>
+<div onmouseover="stop();" onmouseout="go();">
+<img  src="../img/01.png" class="hide">
+	<img  src="../img/02.png" class="hide">
+	<img  src="../img/03.png" class="hide">
+	<img  src="../img/04.png" class="hide">
+	<img  src="../img/05.png" class="hide">
+	<img  src="../img/06.png" class="hide">
+	<img  src="../img/07.png" class="hide">
+</div><br>
+<div onmouseover="stop();" onmouseout="go();">
+<img  src="../img/01.png" class="hide">
+	<img  src="../img/02.png" class="hide">
+	<img  src="../img/03.png" class="hide">
+	<img  src="../img/04.png" class="hide">
+	<img  src="../img/05.png" class="hide">
+	<img  src="../img/06.png" class="hide">
+	<img  src="../img/07.png" class="hide">
+</div>
+</body>
+</html>

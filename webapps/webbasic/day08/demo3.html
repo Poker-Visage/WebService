@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>建议计算器</title>
+<script type="text/javascript">
+function cal(){
+	var input=document.getElementById("num");
+	var num=input.value;
+	console.log(num);
+	//开始计算
+	//输入错误，结果是啥
+	try{
+		input.value=eval("("+num+")");
+	}catch(e){
+		input.value="sorry";
+	}
+	}
+</script>
+</head>
+<body>
+	<input type="text" id="num">
+	<input type="button" value="计算" onclick="cal();">
+</body>
+</html>

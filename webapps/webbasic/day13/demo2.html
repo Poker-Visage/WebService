@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>合成事件</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("img:first").hover(function(){
+		$("img:first").addClass("big");
+		$("img:first").attr("src","../img/14.png");
+	},function(){
+		$("img:first").removeClass();
+		$("img:first").attr("src","../img/06.png");
+	});
+	setInterval(function(){
+		$("img:eq(1)").toggle(1111);
+	},200);
+});
+</script>
+<style type="text/css">
+	.big{
+	width: 500px;
+	
+	}
+	.small{
+	width: 256px;
+	}
+</style>
+</head>
+<body>
+	<img src="../img/06.png" alt=""><!--src找不到时，alt提示  -->
+	<img src="../img/06.png" alt="">
+</body>
+</html>

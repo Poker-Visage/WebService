@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>学子商城轮播图1</title>
+<script type="text/javascript">
+	$(function(){
+		$("#banner").width($(".oli").eq(0).width()*$(".oli").length);
+		var index=0;
+		var id=null;
+		function BannerLeft(){
+			if(index<$(".oli").length-1){
+				index++;
+			}else{
+				index=0;
+			}
+			$("#banner").animate({'left':-$(".oli").eq(0).width()*index},1000);
+		}
+		id=setInterval(BannerLeft,1500);
+		$("#banner_wrap").mouseover(function(){
+			clearInterval(id);
+		});
+		$("#banner_wrap").mouseout(function(){
+			id=setInterval(BannerLeft,1500);
+		});
+	});
+</script>
+	<style type="text/css">
+		*,ul,a{
+		margin: 0px;
+		padding: 0px;
+		list-style: none;
+		text-decoration:none; 
+		}
+		#banner_wrap{
+		width: 1000px;
+		border: 1px solid red;
+		height: 400px;
+		margin:0 auto;
+		margin-top: 30px;
+		position: relative;
+		}
+		#banner{
+		position: absolute;
+		height: 400px;
+		}
+		.oli{
+		width: 1000px;
+		height: 400px;
+		float:left;
+		}
+	</style>
+</head>
+<body>
+	<div id="banner_wap">
+		<ul id="banner">
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner1.png"></a></li>
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner2.png"></a></li>
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner3.png"></a></li>
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner4.png"></a></li>
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner1.png"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

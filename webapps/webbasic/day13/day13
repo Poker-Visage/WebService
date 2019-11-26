@@ -1,0 +1,98 @@
+
+		jQuery事件
+		
+	dom事件，操作繁琐，并且有严重的兼容性问题
+		jQuery对dom做了封装，简化了操作，消除了兼容性问题
+	
+动态绑定事件
+	$(function(){
+		obj.click(function(){});//简写形式
+		
+		obj.bind("click",function(){});//完整语法    bind绑定
+	})			
+	
+关于js中的window.onload和$(function(){})
+	window.onload在同一个html文件中有多个的话，后者会覆盖前者。
+	$(function(){})有多个，每一个都有效。	
+	
+事件对象event                    *****************
+
+事件机制
+		事件冒泡机制，事件从内向外传播。
+		作用：少写事件，通过获取事件源绑定一个事件。
+	
+	取消冒泡
+		js:event.stopPropagetion();
+			  event.cancelBubble=true;	//Bubble泡泡  cancel取消
+	jQuery中取消冒泡的做法		demo1***********
+		只需要在函数中添加return false;
+	
+	获取事件源
+	js: var obj=event.srcElement||event.target;	
+	jq:var obj=event.target;//jq直接兼容
+	
+	jQ为我们提供了一套统一简洁的API
+	jQ对事件操作，需要背。
+	
+	合成事件，jq对事件的特殊贡献，是噱头，不是重点**********
+	
+	hover()相当于 onmouseover和onmouseout的结合
+	toggle()相当于hide()和show()方法的结合
+	
+模拟事件
+	电脑模拟人的行为，做了一些操作，激发了某些事件
+		比如：电脑弹窗广告
+			一个网站，显示广告，可以人为的点X关掉，不点的话，2秒后电脑模拟关闭，同时调用了绑定事件函数	
+			obj.trigger（事件类型）//trigger 触发器                                                                                      obj.trigger（事件类型）//trigger 触发器
+			$(":button").trigger("click");
+##把jq的事件背好，合成事件，模拟事件的demo
+
+##动画
+		动画的本质，是使用定时器连续不断的修改样式。启动了定时器，相当于启动了子线程（时间本身是主线程，两者并发执行，相互不等待）
+		
+	   网页上由动效，提高用户体验，有专门的动效设计。
+  1.显示，隐藏																																				demo4
+	   		show()/hide()作用：通过同时改变元素的宽度和高度来实现显示或隐藏（透明度）
+	   		用法：obj.show(执行时间,回调函数)
+	   		执行时间：show normal fast 写毫秒数    //normal标准    fast快速的
+	   		回调函数：传给某一个方法的函数，在方法结束时运行。
+	   		
+	   		<input type="button" value="显示" onclick="show();">
+	<input type="button" value="隐藏" onclick="hide();">
+	function show(){
+		$("img").show(500,function(){
+			console.log("显示完成");
+		});
+	}
+	function hide(){
+		$("img:eq(0)").hide(500,function(){
+			console.log("隐藏完成");
+		});
+	}
+	
+		
+	   		
+	   		2.上下滑动式
+	  slideDown()/slideUp()作用：通过改变高度来实现显示或者隐藏效果，用法同上！ 		
+	   		function down(){
+		$("div:eq(1)>div").slideDown(2000,);
+	}
+	function up(){
+		$("div:eq(1)>div").slideUp(2000);	
+	}
+	   		
+	   		3.淡入淡出
+	   fadeIn()/fadeOut()；通过改变透明度opacity来实现显示或者隐藏，用法同上！！！
+	   		
+	   		4.自定义动画	,动起来
+	   自定义动画基于相对/绝对/固定定位
+	   		animate(偏移位置，执行时间，回调函数);   animate赋予生命
+	   		
+	   		偏移位置：{‘left’ :'500px'}
+	   描述动画执行之后元素的样式位置。	
+	   
+	   	<img id="img" alt="" src="../img/08.png">	
+	   	#img{
+        position: relative;
+          }		
+	   		

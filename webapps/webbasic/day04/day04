@@ -1,0 +1,92 @@
+    
+    cursor: pointer;/*鼠标悬停的时候变成手*/ cursor(光标) pointer指示物   mouse老鼠   
+    
+    3：字体相关属性：
+	4：文本属性：
+	5：边框属性：
+	6：常见复杂属性：	
+	
+	
+##3：字体属性
+	   font-size：字体大小
+	   			单位：px   cm   
+	   			em（相对的度量单位）：   基础字号16px
+	   			则font-size：1.5em     基础字号1.5倍
+	 font-family:字体    “微软雅黑”   “黑体”
+	 font-weight:字体的粗细（磅值pt） 
+	 		lighter细一点
+	 		normal正常粗细
+	 		bold粗一点
+	 		bolder比粗更粗
+	 
+	 font-style：字体样式    normal（普通样式）  italic（斜体）		 				
+	 
+4:文本属性：
+		color：文本颜色
+		text-align：文本的对齐方式
+			left左  right右  center中心
+		
+		text-decoration：文本装饰   
+				text-decoration：non 给a标签去除下划线
+		 	 text-decoration：line-through增加删除线
+		 	 text-decoration：underline增加下划线
+		 	 text-decoration：overline增加上划线
+		 	 
+		 	 line-height：文本行高                             **************************
+		 		由于div的文本在默认情况下根据行高垂直居中，所以，如果希望文本
+		 	在div垂直居中显示只需要把行高属性，设置为：div的高度 
+		 但是！！如果字数过多需要折行，那么行高的效果会每一行折行
+5:边框属性border
+		border：1px solid  black；
+		border-width：边框的宽度
+		border-color：边框的颜色
+		border-style：边框的样式
+		border-top:2px solid black ;上边框
+		border-top-width:上边框的宽度
+		border-top-color:
+		border-top-style:
+		border-right:
+		border-left:
+		border-bottom:
+		
+		border:none   去除边框
+		设置边框的圆角：
+			border-radius:3px;圆角，半径	
+			div是正方形的，网页中显示圆形，只需要边框圆角设置成宽一半
+##总结：1.确定宽高（div不写宽默认是父级的宽）				 			 
+		      2。考虑背景问题（颜色和图片）
+		      3.内部字体问题（字号，颜色，字体，对齐）
+		      4.位置的微调（margin padding 浮动 定位）
+	注意：margin会移动元素的位置
+			padding会改变占据页面的大小	    
+			
+##溢出属性：overflow
+		overflow：visible；溢出部分可见
+		overflow：hidden；溢出部分隐藏
+		overflow：scroll溢出部分显示滚动条
+6:常见复杂属性
+				1.display 控制元素的显示方式（块级和行内）
+						display:block;按照块级元素进行显示	
+						display：inline；按照行内元素进行显示，一般不用
+						display：none；隐藏元素
+						
+						display:inline-block;行内块                                                 ***自己查
+##总结：行内元素：一行中可以有多个，从左往右依次摆放
+				行内元素，宽 高 上 下 外 边距都失效
+			块级元素：独占一行，只有块级元素可以设计宽高和上下外边距  
+			
+	display:inline ;
+	display:block;
+	display:inline-block;行内块！与其他元素共占一行，可以改变其宽高外边距
+			行内块非常容易出bug，使用时要小心
+			
+##   ***浮动 float***
+	float：left；元素浮动起来往左放
+	float：right；往右放
+	一旦元素设置了浮动属性，当前元素就会脱离默认文档流， 在默认文档流之上渲染绘制
+	
+	元素浮动后，先前位置将会被其他元素占用。
+	float最常见的用法是把块级元素横向排列，  						
+												
+	
+							  

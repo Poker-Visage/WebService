@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>关于this</title>
+<script type="text/javascript">
+	function fn(btn){
+		var oDiv=btn.parentNode;
+		oDiv.removeChild(btn);
+		console.log(oDiv);
+	}
+</script>
+</head>
+<body>
+<div>
+	<input type="button" value="111" onclick="fn(this)">
+	<input type="button" value="222" onclick="fn(this)">
+	<input type="button" value="333" onclick="fn(this)">
+	<input type="button" value="444" onclick="fn(this)">
+</div>
+</body>
+</html>

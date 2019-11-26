@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>创建新节点的演示</title>
+<script type="text/javascript">
+window.onload=function(){
+var div=document.getElementsByTagName("div");
+var newNode=document.createElement("input");
+newNode.setAttribute("type","text");
+newNode.value="mary";
+newNode.style.color="red";
+div.appentChild(newNode);
+}
+</script>
+</head>
+<body>
+<div></div>
+</body>
+</html>

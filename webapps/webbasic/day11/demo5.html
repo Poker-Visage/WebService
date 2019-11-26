@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	var cities=[["石家庄","保定","张家口"],["济南","德州","青岛"],["南京","常州","张家港"]];
+	function chg(){
+		var index=$("#province").val();
+			//$("#city option").remove("#city option:not(#aaa)");
+			$("#city option").remove(":gt(0)");//过滤器有多种
+		var pcities=cities[index];
+		len=pcities.length;
+		if(pcities){
+			for(var i=0;i<pcities.length;i++){
+				$("#city").append($("<option>"+pcities[i]+"</option>"));
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	省：
+	<select onchange="chg();" id="province"><!--onchange 值改变事件   change变化-->
+		<option value="-1">请选择</option>
+		<option value="0">河北省</option>
+		<option value="1">山东省</option>
+		<option value="2">江苏省</option>
+	</select><br>
+	市：
+	<select id="city">
+		<option id="aaa">请选择</option>
+	</select>
+</body>
+</html>

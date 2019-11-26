@@ -1,0 +1,107 @@
+## 循环 for    while   do-while
+
+###javaScript常用API
+	##string
+	1.创建string对象的2种方式
+    
+    var str1="hello world";
+    var str2=new String("hello world");
+	2.大小写的转换
+		str.toLowerCase();小写
+		str.toUpperCase();大写   
+	3.获取指定的字符（串）
+	    str.charAt(index);
+	    
+	4.查询指定的字符串
+		str.indexOf("a");
+	
+	5.获取子字符串
+			str.substring(star,[end]);
+			var str="abcdefghi";
+			var str1=str.substring(2,4);
+			
+	6.替换子字符串
+			str.replace(str1,str2);			    		
+								   原      替换
+	7.分割子字符串
+		str.split(str1,[length]);
+		length,指定返回数组的最大长度。返回值为分割后的字符串数组	
+		
+		var str="一，二，三，四";
+		var strArray=str.split(",",5);
+###Number对象的常用方法
+		toFixed(length):把number转换成字符串（和toString（）类似）， length代表保留小数点后一定位置。
+	如有必要，该数字会被四舍五入，位数不够用0弥补			
+###数组：(类似java中的list)
+		js数组中的特点：
+			1.Array在js中都是obj的数组
+			2.js中的数组可以同时存放不同数据类型的值
+			3.	js中的长度可变
+			4.两种创建方式，不管哪一种，创建出来都是object类型
+	
+	5.数组常用API
+	  arr.reverse()反转输出					
+	  arr.sort()排序
+	  		##sort()方法，是按照数组中每一个元素的unicode编码进行排序的，比完第一位比第二位
+	  	string就是这样排序，但是这种排序不适合数字排序	
+### math 										
+		 console.log(Math.round(4.56));四舍五入 
+		 Math.floor(-4.5);-5  往下舍
+### date
+	1.创建客户机当前时间
+		var d1=new Date();	
+	2.创建指定时间的date对象（指定时间一般源于服务器）
+			 var d2=new Date("2016/12/12 12:12:12");	
+	3.读写时间的毫秒数
+			getTime()读  setTime()写  		 
+	###date的API
+			最重要的作用就是从服务器拿到时间对象，在页面根据不同的需求显示	
+		d1.getFullYear();//获取年		
+		d1.getMonth();//获取月（国外时间少一个月）需要+1
+		d1.getDate();//几号
+		d1.getDay();//周x
+		
+		d1.getHours();//小时
+		d1.getMinutes();//分钟
+		d1.getSeconds();//秒
+	###date转化成本地时间格式
+		d1.toString();	
+		d1.toLocaleTimeString();根据本地时间格式，把 Date 对象的  时间部分  转换为字符串。"下午3:41:46"
+		d1.toLocaleDateString();根据本地时间格式，把 Date 对象的  日期部分  转换为字符串。
+		
+###正则表达式
+		.   任意字符
+		\w 任意数字、字母、下划线
+		\s 任意空白字符
+		\d 任意数字
+		^	  字符串开头
+		$	  字符串结束
+	1.如何创建正则对象
+			直接创建   var reg=/正则表达式/[模式];
+			创建对象   var reg=new RegExp(正则表达式，[模式]);
+							var reg=new RegExp('\\s\\d'); 
+						
+							var str=" 1";
+ 				var reg=new RegExp("\\s\\d");
+			  console.log(reg.test(str));
+			--全局模式，设定当前匹配为全局，g
+			--设置当前匹配模式忽略大小写，i
+			
+	2.正则对象的方法reg.xxx(str);
+					   
+			//var str="you can you up,no can no bi bi";
+			//var reg=/no/g;
+		//reg.exec(str); 从str中找到匹配正则的子串
+		//在普通模式下，返回第一个符合的子串                                         不断找出
+		//全局模式下，第n次执行，返回符合要求的第n个子串
+		/* console.log(reg.exec(str));
+		console.log(reg.exec(str)); */
+
+		//reg.test(str);
+		//判断str中是否包含reg                                   包含
+		//console.log(reg.test(str));
+								
+   3.字符串匹配正则的方法 str.xxx(reg);	
+		1.str.replace(reg,"");将str中的reg匹配的所有子串都替换成目标子串        替换
+		2.str.match(reg);从str中找出和reg匹配的子串,  返回值是数组                     找出     
+		3.str.search(reg);从str中搜索reg，返回值是一个int								 找到

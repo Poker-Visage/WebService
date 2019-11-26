@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>学子商城轮播图</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		//3.把所有li的宽度算好，赋值给ul当作宽度
+		$("#banner").width($(".oli").eq(0).width()*$(".oli").length);
+		//定义轮播的方法
+		//1.记时器
+		var index=0;
+		//2.定时器
+		var id=null;
+		function BannerLeft(){
+			if(index<$(".oli").length-1){
+				index++;
+			}else{
+				index=0;
+			}
+			
+			$("#banner").animate({'left':-$(".oli").eq(0).width()*index},1000);
+		}
+		id=setInterval(BannerLeft,1500);
+		$("#banner_wrap").mouseover(function(){
+			clearInterval(id);
+		});
+		$("#banner_wrap").mouseout(function(){
+			id=setInterval(BannerLeft,1500);
+		});
+	});
+</script>
+<style type="text/css">
+*,ul,a{
+	margin: 0px;
+	padding: 0px;
+	list-style: none;
+	text-decoration: none;
+}
+#banner_wrap{
+width: 1000px;
+height: 400px;
+margin: 0 auto;
+border: 1px solid red;
+margin-top: 30px;
+position: relative;
+}
+#banner{
+position: absolute;
+height: 400px;
+}
+.oli{
+width: 1000px;
+height: 400px;
+float: left;
+}
+</style>
+</head>
+<body>
+	<div id="banner_wrap"> 
+		<ul id="banner">
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner1.png"></a></li>
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner2.png"></a></li>
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner3.png"></a></li>
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner4.png"></a></li>
+			<li class="oli"><a href="#"><img src="../images/itemCat/itemCat_banner1.png"></a></li>
+		</ul>
+	</div>
+</body>
+</html>

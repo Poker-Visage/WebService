@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>轮播图显示</title>
+<script type="text/javascript">
+var n=1;//轮播总次数
+var id;//定时器的ID
+var imgs;
+window.onload=function(){
+	imgs=document.getElementsByTagName("img");
+	
+	//先把第一张显示
+	imgs[0].className="show";
+	//启动轮播
+	go();
+	
+}
+function stop(){
+	clearInterval(id);
+}
+function go(){
+	//用定时器启动轮播
+	 id=setInterval(function(){
+		//计算要显示图片的下标
+		var index=n%imgs.length;
+		for(var i=0;i<imgs.length;i++){
+			imgs[i].className="hide";
+		}
+		//显示对的index图片
+		imgs[index].className="show";
+		n++;
+	 },500)
+}
+</script>
+<style type="text/css">
+	div{
+	width:256px;
+	height:256px;
+	margin: 50px auto;
+	border: 2px solid #f00;
+	}
+	.show{
+	display:block;
+	}
+	.hide{
+	display: none;
+	}
+</style>
+</head>
+<body>
+<!-- cursor光标 mouse老鼠 -->
+	<div onmouseover="stop();" onmouseout="go();">
+	<img  src="../img/01.png" class="hide">
+	<img  src="../img/02.png" class="hide">
+	<img  src="../img/03.png" class="hide">
+	<img  src="../img/04.png" class="hide">
+	<img  src="../img/05.png" class="hide">
+	<img  src="../img/06.png" class="hide">
+	<img  src="../img/07.png" class="hide">
+	</div>
+</body>
+</html>

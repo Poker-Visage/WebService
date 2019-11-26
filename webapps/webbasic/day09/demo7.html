@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>追加和插入新节点</title>
+<script type="text/javascript">
+	window.onload=function(){
+		
+	}
+	function fn1(){
+		var oLi=document.createElement("li");
+		oLi.innerHTML="重庆";
+		var oUl=document.getElementsByTagName("ul")[0];
+		oUl.appendChild(oLi);
+		}
+	function fn2(){
+		var oLi=document.createElement("li");
+		oLi.innerHTML="洛阳";
+		//插入需要父级对象，和弟弟对象
+		var oUl=document.getElementsByTagName("ul")[0];
+		var gz=document.getElementById("gz");
+		//把新节点插入到父亲下级，弟弟之前
+		oUl.insertBefore(oLi,gz);//insert插入，Before在。。。之前
+		
+	}
+	function fn3(){
+		//需要父级元素对象和要删除的元素对象
+		var oUl=document.getElementsByTagName("ul")[0];
+		var gz=document.getElementById("gz");
+		//通过父级对象删除孩子
+		oUl.removeChild(gz);
+	}
+</script>
+</head>
+<body>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>佳木斯</li>
+		<li>葫芦岛</li>
+	</ul>
+	<div>
+		<input type="button" value="追加" onclick="fn1()">
+		<input type="button" value="插入" onclick="fn2()">
+		<input type="button" value="删除" onclick="fn3()">
+	</div>
+</body>
+</html>

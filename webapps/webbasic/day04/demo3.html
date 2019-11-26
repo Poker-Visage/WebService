@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>自己做的二级菜单</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#me1>li").click(function(){
+		if($(this).next().css("display")=="block"){
+			$(this).next().css("display","none");
+			$(".cla").children("img").attr("src","../images/myOrder/myOrder1.png");
+		}else{
+			$(".ssa").css("display","none");
+			$(".cla").children("img").attr("src","../images/myOrder/myOrder1.png");
+			
+			$(this).next().css("display","block");
+	    $(this).children("img").attr("src","../images/myOrder/myOrder2.png");       //   图片切换不换
+		}
+	});
+});
+</script>
+<style type="text/css">
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+li {
+	list-style: none;
+}
+
+#me {
+	width:160px;
+}
+.cla{
+width: 120px;
+height: 36px;
+background-color: rgb(10,161,237);
+color:#f5f5f5;
+padding-left: 40px;
+padding-right: 10px;
+cursor: pointer;
+margin-bottom: 10px;
+background-repeat: no-repeat;
+background-position: 10px center;
+font-size: 14px;
+line-height: 36px;
+}
+.ss1{
+background-image: url("../images/myOrder/myOrder.png");
+}
+.ss2{
+background-image: url("../images/myOrder/pcenter_icon1.png");
+}
+.ss3{
+background-image: url("../images/myOrder/pcenter_icon2.png");
+}
+.ss4{
+background-image: url("../images/myOrder/pcenter_icon3.png");
+}
+.ssa{
+background-color: #fff;
+padding-left: 30px;
+padding-bottom: 10px;
+display: none;
+}
+.ssa>li{
+font-size: 12px;
+line-height: 40px;
+}
+.cla>img{
+float: right;
+margin-right: 5px;
+margin-top: 12px;
+}
+</style>
+</head>
+<body>
+	<div id="me">
+		<ul id="me1">
+			<li class="cla ss1">我的订单 
+			<img src="../images/myOrder/myOrder1.png">
+			</li>
+
+			<ul class="ssa">
+				<li>全部订单</li>
+				<li>待付款</li>
+				<li>待收货</li>
+				<li>待评价</li>
+				<li>退货退款</li>
+			</ul>
+
+			<li class="cla ss2">我的优惠券 <img
+				src="../images/myOrder/myOrder1.png">
+			</li>
+			<ul class="ssa">
+			<li>我的优惠券</li>
+		</ul>
+
+		<li class="cla ss3">收货地址 <img
+			src="../images/myOrder/myOrder1.png">
+		</li>
+		<ul class="ssa">
+			<li>地址管理</li>
+		</ul>
+
+		<li class="cla ss4">帐号管理 <img
+			src="../images/myOrder/myOrder1.png">
+		</li>
+		<ul class="ssa">
+			<li>我的信息</li>
+			<li>安全管理</li>
+		</ul>
+		</ul>
+	</div>
+</body>
+</html>

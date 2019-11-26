@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>正则的演示</title>
+<script type="text/javascript">
+//var str="you can you up,no can no bi bi";
+//var reg=/no/g;
+//reg.exec(str); 从str中找到匹配正则的子串
+//在普通模式下，返回第一个符合的子串
+//全局模式下，第n次执行，返回符合要求的第n个子串
+/* console.log(reg.exec(str));
+console.log(reg.exec(str)); */
+
+//reg.test(str);
+//判断str中是否包含与reg匹配的子串
+//console.log(reg.test(str));
+ /* var str=" 1";
+ var reg=new RegExp("\\s\\d");
+ console.log(reg.test(str)); */
+ var str="you can you up,no can no bi bi";
+ var reg=/no/g;
+// var str1=str.replace(reg,"bu");
+ console.log(str.match(reg));
+ console.log(str.search(reg));
+</script>
+</head>
+<body>
+
+</body>
+</html>

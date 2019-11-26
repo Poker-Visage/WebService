@@ -1,0 +1,132 @@
+
+select.....from 表名 where ....group by ... having ....order by ....limit
+##分组查询   group by   group创建组
+##Having分组中有条件的统计
+
+having count(name)>2   where后边是相等的值，having后边是范围
+
+ ##子查询
+		嵌套在sql语句里面的查询saql语句称为子查询
+##关联查询
+ 		-同时查询多张表的数据称为关联查询     就是两张表中查的同一个人的信息拼到一块
+        ##等值连接和内连接
+ 		--都是关联查询的查询方式，效果相同
+ 		等值连接格式：select*from A,B where A.x=B.x  and A.y=abc;
+ 		内联接格式:select*from A join B on A.x=B.x where A.y=abc;		
+          ##外连接
+ 			关联查询时有时候 只查询两张表有关系的数据不能满足需求，如果需要查询某一张
+ 			表所有数据（包含没有关系的），则使用外连接查询方式
+
+
+
+
+
+
+
+##分组查询   group by   group创建组
+	  分组查询通常和聚合函数结合使用，查询条件中每个   xxx 就以xxx作为分组的条件
+	格式：  	select deptno,avg(sal) from emp group by deptno desc;
+	 
+	 1.查询每个部门的最高工资
+	 select deptno,max(sal)from emp group by deptno;
+	 2.查询每个分类下商品的库存总量
+	 3.查询每个部门有多少人
+	 select deptno,count(*) from emp group by deptno;
+	 4.查询每个部门工资大于2000的有多少人
+	 select deptno,count(*) from emp where sal>2000  group by deptno ;
+	 5.查询每个分类下低于100元的商品数量
+	 select category_id,count(*) from t_item where price<100 group by category_id;
+	 6.查询emp表中每个部门的编号，人数，工资综合；然后根据人数升序，工资总和降序依次排序
+	 select deptno,count(*),sum(sal) from emp group by deptno order by count(*),sum(sal) desc;
+	 --查询每个部门，每个主管的手下人数
+	 select deptno,mgr,count(*) from emp where mgr is not null group by deptno,mgr;
+	 
+	 --提高题：每年入职的人数
+	 select  extract(year from hiredate) e,count(*) from emp group by e;
+##Having分组中有条件的统计
+     --where后面只能对普通字段进行筛选，聚合函数使用Having
+     having写在group by后面，通常两者结合使用
+        --查询每个部门的平均工资，要求平均工资大于2000；
+			 select deptno,avg(sal) a from emp group by deptno having a>2000;
+		1.查询所有分类的对应库存量，要求库存量高于1000
+		2.查询所有分类对应的平均单价，平均单价低于100；
+		3.查询每个部门中的名字包含a的员工的平均工资，只显示平均工资高于2000的
+sql中各关键字的顺序
+		select.....from 表名 where ....group by ... having ....order by ....limit
+	课堂练习：
+		1.查询emp表中，每个部门的平均工资高于2000的部门编号，部门人数，平均工资，根据平均工资进行降序排序
+	select deptno,count(*),avg(sal)a from emp group by deptno having a>2000 order by a desc;
+	2.查询emp表，名字不是以k开头的信息，每个部门的最低工资高于1000的部门编号，工资总和，平均工资以及最低工资
+根据平均工资进行排序
+ select deptno,sum(sal),avg(sal)a ,min(sal) m from emp where ename not like 'k%' 
+ group by deptno having m>1000 order by a;
+ 3.查询emp 表中部门编号是10，30的部门人员，每个职业中的最高工资低于5000的
+ 职业名称，人数，平均工资，最高工资根据人数排序，如果人数一致，
+ 根据最高工资进行降序排序。
+ 	select job,count(*)c,avg(sal),max(sal) m from emp where deptno in(10,30)
+ 	group by job having m<5000 order by c,m desc;
+ 4.查询emp，工资在1000-3000的员工信息，每个部门的编号，工资总和，平均工资，
+ 过滤掉平均工资低于2000的部门，平均工资升序排序，如果一致则工资总和降序
+ 		select deptno,sum(sal) s,avg(sal) a from emp where sal between 1000 
+ 		and 3000 group by deptno having a>=2000 order by a,s desc;	
+ 			
+ ##子查询
+ 		1.查询拿最高工资的员工姓名
+ 		     select ename from emp where sal=(select max(sal) from emp);	
+ 		2.查询工资高于平均工资的员工姓名和工资
+ 		   select ename,sal from emp where sal>(select avg(sal) from emp);			 
+ 		3.查询最后入职的员工信息 
+ 		select*from emp where hiredate=(select max(hiredate) from emp);
+ 		4.查询出有商品的分类信息。
+ 		select * from t_item_category where id in( select 
+ 		distinct category_id from t_item);
+ 		5.查询出有员工的部门信息
+ 		select *from dept where deptno in(select distinct 
+ 		deptno from emp);
+ 		6.查询工资高于 20号部门里面工资最高工资的 所有员工信息
+ 		select *from emp where sal>(select max(sal) from emp where deptno=20);
+ 		7.查询和jones一样工作的员工信息
+ 		select *from emp where job=(select job from emp where ename='jones')and ename !='jones';
+ 		 8.查询部门平均工资最高的部门信息 
+ 		 select *from dept where deptno in(select deptno from 
+ 		 emp group by deptno having avg(sal)=(select avg(sal) a 
+ 		 from emp group by deptno order by a desc limit 0,1));
+ 		 
+ 	什么是子查询：嵌套在sql语句里面的查询saql语句称为子查询
+ 			--子查询可以有多层嵌套
+ 			--子查询可以写在的位置有：
+ 			  1.写在where后面做查询条件的值
+ 			  2.写在from后面当成一张新的表（必须得写别名）
+ 			  select*from (select*from xxx) t1;
+ 			  3.可以写在创建表的时候
+ 			  create table name as(select ename,sal from emp); 
+ 			  
+ ##关联查询
+ 		-同时查询多张表的数据称为关联查询
+ 		select emp.ename,dept.dname from emp,dept where emp.deptno=dept.deptno;			  
+ 		2.查询每个商品的标题，商品单价，商品分类名称
+ 		select i.title,i.price,c.name from t_item i,t_item_category c 
+ 		where i.category_id=c.id;
+ 		3.查询在new york工作的所有员工信息
+ 		select e.* from emp e,dept d where e.deptno=d.deptno and 
+ 		d.loc='new york';
+ 		
+ ##笛卡尔积
+ 		关联查询如果不写关联关系，则查询结果为两张表的乘机，这个乘积就是笛卡尔积
+ 		笛卡尔积是个错误的结果。
+ ##等值连接和内连接
+ 		--都是关联查询的查询方式，效果相同
+ 		等值连接格式：select*from A,B where A.x=B.x  and A.y=abc;
+ 		内联接格式:select*from A join B on A.x=B.x where A.y=abc;
+ 		  select e.* from emp e join dept d   on e.deptno=d.deptno   where  d.loc='new york';
+ ##外连接
+ 			关联查询时有时候 只查询两张表有关系的数据不能满足需求，如果需要查询某一张
+ 			表所有数据（包含没有关系的），则使用外连接查询方式
+ 		-左外连接：以join  左边表为主表查询所有数据，右边表只查询有关系的数据
+ 		-右外连接：以join  右边表为主表查询所有数据，左边表只查询有关系的数据
+ 		1.查询所有员工的名字和对应的部门名（使用左外）
+ 		select e.ename,d.dname from emp e left join dept d on e.deptno=d.deptno;
+ 		2.查询所有部门的员工（右外）		
+    select e.ename,d.dname from emp e right join dept d on e.deptno=d.deptno;
+ 				
+ 			  	 

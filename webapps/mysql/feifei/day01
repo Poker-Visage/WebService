@@ -1,0 +1,133 @@
+7月8号自己写的
+创建数据库
+              图解                                                                      整理                  常规
+create schema yichuan default character set utf8 collate utf8_general_ci;
+collate utf8_general_ci;数据库较对规则    数据库字符集、解释不明白、区分大小写
+
+
+
+  IO流文件存储的弊端
+	1.效率低（开发效率低，执行效率也低）
+	2.数据的增删改查非常麻烦
+	3.只能保存小量数据
+	4.只能存储文本数据
+
+###什么是DB
+	database：数据库，数据库实际上就是一个文件集合，数据按照特定格式存储到文件中，使用sql语句对数据进行增删改查操作。
+
+###什么是DBMS
+	DataBaseManagenebtSystem:数据库管理系统，管理数据库文件的软件
+	   指一种操作和管理数据库的大型软件，用于建立、使用和维护数据库，对数据进行统一的管理和控制
+	   
+	常见的数据库：
+		mysql  oracle  db2  sqlserver  sqlite	   
+	数据库分类：
+		1.关系型数据库： 经过数学理论验证，可以将现实生活中存在的各种关系，保存到数据库中，这种数据库称为关系型数据库，
+		在此数据库中，以表的形式保存数据之间的关系
+		
+		2.非关系型数据库：主要为了解决特定的应用场景，如：缓存，高并发访问等数据的方式有多种，redis是常用的非关系型数据库。
+		redis是以键值对的形式保存数据的
+		
+	常见数据库介绍：
+		1。mysql：08年背sun收购，09年被oracle收购。mysql是开源的。被甲骨文收购后出了5.5版本由于使用了oracle核心技术，性能有了大幅提高，却被变成闭源。
+		原mysql程序员出走创办了mariaDB。
+		2.oracle（甲骨文）：性能最强大的数据库，而且收费最贵。通常用户是不缺钱缺技术的国字头公司使用。
+		3.sqlserver:微软公司，闭源收费，提供整套解决方案（web服务器，操作系统，数据库服务器等）
+		4.DB2：IBM公司，闭源收费，通常一些银行项目会使用。
+		5.sqlite:轻量级数据库，应用在嵌入式或移动设备中，大小只有几十k，功能和性能较大型数据库要少很多
+##				
+	mysql安装：
+		参见mysql安装文档，注意两点：1.端口号选择默认3306。2.字符集选择utf-8
+	数据库服务器：就是一台高配置的电脑。  ftp服务器：安装了ftp软件提供了ftp服务功能的高配置电脑。数据库服务器：安装了数据库软件提供数据服务功能的高配置电脑。
+		web服务器：安装了web服务软件的高配置电脑。
+		
+	##连接数据库
+		--打开终端或命令，在终端中输入以下命令：
+			mysql -uroot -p然后回车再回车
+		--退出指令：exit；			
+		#什么是sql:stuctured Query Language:结构化 查询 语言	
+			使用sql语言和数据库服务器进行交互，通过sql告诉数据库服务器对数据进行
+			什么操作。			
+		#sql规范
+				以；（分号）结尾
+				2.关键字之间有空格，通常只有一个，但多个也可以
+				3.可以存在换行
+				4.数据库表名和名称区分大小写
+		#数据库相关SQL：
+				-每一个工程对应一个数据库。存储数据需要先创建一个数据库，然后在数据
+				库中创建表。
+				1.查看所有数据库：
+					show databases;
+				2.创建数据库：
+						create database name;	
+					新建数据库并指定字符集：create database name  character set gbk;	
+				3.查看指定数据库的详情：
+						show create database name;	
+				4.删除数据库：
+						drop database name;	
+				5.使用数据库
+						use name;	//use使用
+			#和表相关的sql，
+					什么是表：表是关系型数据库存储数据的单位。数据库中存储数据需要先创建表
+						往表中存储数据。
+						1.创建表
+							格式：create table 表名（字段1名 字段1类型，字段2名 字段2类型。。。 ）
+							create table name(id int,name varchar(10),age 
+							int,chinese int,math int,english int);
+					*创建表sql语句的执行过程：在终端中写完sql语句后敲回车，终端会把
+						sql通过网络传输到DBMS（mysql），DBMS对sql语句进行解析，然后 
+						对数据库中的数据进行操作。						
+						
+						练习英雄表hero  字段(id name type sal)
+						2.查看表：
+							   show tables;
+						3.查看指定表详情和表的字段信息
+								show create table name;
+								desc name;  desc描述describe
+						4.创建表，指定引擎和字符集
+								create table t1(id int,name 
+								varchar(10))engine=myisam charset=gbk;
+						5.删除表
+								drop table name;	
+											
+	##表的引擎engine
+		innodb:支持数据库的高级操作，包括：事务   外键等
+		myisam:仅支持数据库的增删改查操作。
+		
+	##表的修改  alter改变 change改变	modify修改	
+			use name;
+			create table name(id int,psd varchar(10));											   
+			1.修改表名称
+					rename table 原名 to 新名；		//rename重命名
+			2.修改表的引擎和字符集
+					alter table 表名 engine=myisam charset=gbk;				
+			3.添加表的字段
+					alter table name add 字段名 字段类型		
+               -添加到最前面	
+		alter table name(表名） add 字段名 字段类型 first；	
+              -添加到某个字段的后面
+	alter table name add 字段名 字段类型 after 字段名；//after 在。。。之后
+			4.删除字段
+				alter table name drop 字段名；
+			5.修改字段名称和类型
+				-alter table name change 原字段名  新字段名 字段类型；change改变						
+			6.修改字段 的类型和位置
+				alter table name modify 字段名 字段类型  first/after xxx;	modify修改		
+	##数据相关的SQL
+			1.插入数据		
+					--全表插入：要求插入的数据数量和顺序要和表字段的数量顺序一致
+					      insert into name values(值1，值2，值3。。。);
+					--指定字段插入： insert into name(字段1，字段2.。。)
+					  values(值1，值2，值3。。。);
+				 批量插入：insert into name values(3，‘无空’，23),(4,'八节'，18)
+			2.查询数据：
+				  	select*from t_stu;			select挑选
+				  	select name,age from t_stu;
+			3.删除数据(唯一一个删除不是drop)
+					delete from t_stu where name='悟空';
+			4.修改数据
+					update t_stu set name='张三' where id=1;//update更新
+	##windows电脑中出现命令行无法插入中文解决方法
+			在命令行中先登录mysql 然后执行 set names gbk;通知mysql，客户端（命令行）
+			的编码格式为gbk；			
+		   				  	

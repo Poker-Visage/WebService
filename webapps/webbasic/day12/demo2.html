@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>简易的二级菜单</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#nav>li").click(function(){
+			//
+			if($(this).next().css("display")=="block"){
+				//如果点击时，自己的二级菜单是显示状态，把自己的二级菜单关掉
+				//next（）是下一个，这里的具体意思是点击li的下一个ul
+				$(this).next().css("display","none");
+				//$(".menu").css("display","none");//全部关闭
+				}else{
+					//自己的二级菜单没有打开
+					//全部关闭，打开自己的弟弟
+				//	$(".menu").css("display","none");
+				//	$(this).next().css("display","block");
+					//2.先把自己的弟弟打开
+					//再把除了弟弟以外的二级ul都关掉
+					$(this).next().css("display","block").siblings(".menu").css("display","none");
+				}
+		});
+	});
+</script>
+<style type="text/css">
+	ul ul{
+	display: none;
+	}
+	li{
+	list-style:none;
+	}
+</style>
+</head>
+<body>
+	<ul id="nav">
+		
+		<li><a href="#" class="navLink">达内java</a></li>
+		<ul class="menu">
+			<li><a href="#">课程介绍</a></li>
+			<li><a href="#">研发团队</a></li>
+			<li><a href="#">讲师风采</a></li>
+			<li><a href="#">练习我们</a></li>
+		</ul>
+		
+		<li><a href="#" class="navLink">达内java</a></li>
+		<ul class="menu">
+			<li><a href="#">课程介绍</a></li>
+			<li><a href="#">研发团队</a></li>
+			<li><a href="#">讲师风采</a></li>
+			<li><a href="#">练习我们</a></li>
+		</ul>
+		
+		<li><a href="#" class="navLink">达内java</a></li>
+		<ul class="menu">
+			<li><a href="#">课程介绍</a></li>
+			<li><a href="#">研发团队</a></li>
+			<li><a href="#">讲师风采</a></li>
+			<li><a href="#">练习我们</a></li>
+		</ul>
+		
+		<li><a href="#" class="navLink">达内java</a></li>
+		<ul class="menu">
+			<li><a href="#">课程介绍</a></li>
+			<li><a href="#">研发团队</a></li>
+			<li><a href="#">讲师风采</a></li>
+			<li><a href="#">练习我们</a></li>
+		</ul>
+		
+	</ul>	
+</body>
+</html>

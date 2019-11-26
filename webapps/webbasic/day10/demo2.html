@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>事件绑定演示</title>
+<script type="text/javascript">
+	function fn1(){
+		console.log("在属性中直接处理事件")
+		document.changeTitle("新的标题内容");
+		
+	}
+	window.onload=function(){
+		var input=document.getElementsByTagName("input")[0];
+		input.onclick=fn2;//不能写括号
+		var mytext= 'here is some text!";
+		console.log(mytext);
+	}
+	function fn2(){
+		console.log("动态定义事件绑定");
+	}
+</script>
+</head>
+<body>
+	<input type="button" value="按钮一" onclick="fn1();">
+	
+</body>
+</html>

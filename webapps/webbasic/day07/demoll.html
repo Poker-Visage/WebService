@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>计算器</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+	var p=document.getElementById("screen");
+    function cc(num){
+    	return num;
+    	}
+    
+    function ss(mark){
+    	console.log(mark);
+    }
+    </script>
+    <style type="text/css">
+      .panel {
+        border: 4px solid #ddd;
+        width: 192px;
+        margin: 100px auto;
+        /*border-radius: 6px;*/
+      }
+      .panel p, .panel input {
+        font-family: "微软雅黑";
+        font-size: 20px;
+        margin: 4px;
+        float: left;
+        /*border-radius: 4px;*/
+      }
+      .panel p {
+        width: 122px;
+        height: 26px;
+        border: 1px solid #ddd;
+        padding: 6px;
+        overflow: hidden;
+      }
+      .panel input {
+        width: 40px;
+        height: 40px;
+        border:1px solid #ddd;
+      }
+    </style>
+    
+  </head>
+  <body>
+    <div class="panel" id="ss">
+      <div>
+        <p id="screen"></p>
+        <input type="button" value="C" onclick="ss('C')">
+        <div style="clear:both"></div>
+      </div>
+      <div>
+        <input type="button" value="7" onclick="cc(7)">
+        <input type="button" value="8" onclick="cc(8)">
+        <input type="button" value="9" onclick="cc(9)">
+        <input type="button" value="/" onclick="ss('/')">
+        
+        <input type="button" value="4" onclick="cc(4)">
+        <input type="button" value="5" onclick="cc(5)">
+        <input type="button" value="6" onclick="cc(6)">
+        <input type="button" value="*" onclick="ss('*')">
+        
+        <input type="button" value="1" onclick="cc(1)">
+        <input type="button" value="2" onclick="cc(2)">
+        <input type="button" value="3" onclick="cc(3)">
+        <input type="button" value="-" onclick="ss('-')">
+        
+        <input type="button" value="0" onclick="cc(0)">
+        <input type="button" value="." onclick="cc('.')">
+        <input type="button" value="=" onclick="ss('=')">
+        <input type="button" value="+" onclick="ss('+')">
+        
+        <div style="clear:both"></div>
+      </div>
+    </div>    
+  </body>
+</html>

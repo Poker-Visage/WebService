@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>课堂作业</title>
+<script type="text/javascript">
+function cal(){
+	var input=document.getElementById("num");
+	var num=input.value;
+	var span=document.getElementById("result");
+	console.log(span);
+	if(num!=""){
+		if(isNaN(num)){
+			span.innerHTML="您输入有误";
+		}else{
+			span.innerHTML=num*num;
+		}
+	}else{
+		span.innerHTML="请输入数字";
+	}
+}
+</script>
+</head>
+<body>
+<input type="text" id="num">
+<input type="button" value="平方"  onclick="cal();">
+= <span id="result">计算结果</span>
+</body>
+</html>

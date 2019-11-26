@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>弹窗广告</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(":button").click(function(){
+			$("div:eq(0)").slideUp(1000);/*slideUp标签往上隐藏      slidedown标签往下隐藏  */
+		});
+		/* setTimeout(function(){
+			$(":button").trigger("click");
+		},3000); */
+	});
+</script>
+<style type="text/css">
+	div{
+		height: 800px;
+		background: #006699;
+	
+	}
+	div input{
+	float: right;
+	margin: 200px;
+	}
+	div img{
+	float: right;
+	margin: 500px auto;
+	}
+</style>
+</head>
+<body>
+	<div>
+		<input type="button" value="x" >
+		<img alt="" src="../img/09.png">
+	</div>	
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>通过节点，查询节点</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+	//	console.log($("#gz").parent());
+		console.log($("ul").children("#gz"));
+		$("ul").children().css("background","#f00");
+		$("#gz").next().css("background","#0f0");
+		$("ul").children("#gz").next().css("background","#0f0");
+		$("#gz").nextAll().css("background","#f0f");
+		$("#gz").prevAll().css("background","#0ff");
+		$("ul").find("li:not(li[id])").css("background","#990066");
+	});
+</script>
+</head>
+<body>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>杭州</li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,169 @@
+
+          查询所有dell商品，按分类id升序，单价降序排序
+           title     category_id  price
+
+
+	没有条件的查询
+		select*from 表名
+		select 字段1，字段2.。。。from 表名；
+	带条件查询
+	
+	   ##列值为null和 不为null
+	    1.查询没有上级领导的员工编号，姓名，工资
+	    select empno,ename,sal from emp where mgr is null;
+	    2. 查询有上级领导的员工编号，姓名，领导编号 	
+			select empno,ename,mgr from emp where mgr is not null;
+	##别名
+			select empno 员工编号,ename 姓名	from emp;	
+	
+	##去重复： distinct 不同的***********
+			--查询emp表中所有员工的职位
+				select distinct job from emp;		 ？？？？？？？？？？
+	##比较运算符		！=（<>）不等于	
+	
+	##and和or
+		and等效java的&&
+		or等效 | |
+		1.查询不是10号部门，工资小于3000的员工编号，姓名，工资，部门编号
+		select empno ,ename, sal,deptno from emp where deptno!=10 and sal<3000;
+		2.查询部门是30或者上级领导为7698的所有员工的姓名，部门编号，上级领导编号	
+	##in
+		如果查询字段的值为多个的时候可以使用in关键字
+			1.查询person表中年龄（age）是25，28，30，22岁的所有信息
+			select*from person where age in(25,28,30,22);
+			2.查询员工工资是800，950，1600的员工名字和工资
+		 select ename,sal from emp where sal in(800,950,1600); 
+	##between x and y;
+			查询在x，y之间
+		--在某两个数值之间，包含and两边的数值
+		1.查询员工工资在500~1000的所有员工名字和工资
+		select ename,sal from emp where sal between 500 and	1000;	
+		    查询价格介于50和200之外
+		    	not between 50 and 200;
+		
+	##like:
+		_:代表单个未知字符
+		%：代表多个未知字符
+	举例：以a开头  a%
+			 以a结尾  %a
+			 第二个字符是a _a%
+			 包含a  %a%
+			 倒数第三个字符是a %a_ _
+			 第二个和最后一个是a  _a%a
+		1.查询名字以k开头的所有员工名字
+		select ename from emp where ename like 'k%'
+		2.查询商品标题包含记事本的所有商品标题
+		select title from t_item where title like '%记事本%';
+	
+	##查询结果排序  order by    order顺序
+		--格式：order by 字段名 
+			升序：asc（默认）   降序：desc
+		1.查询员工的名称和工资
+			select ename,sal from emp order by sal desc;
+	--多字段排序，当第一个字段有相同值时，第二个字段排序开始。
+			1.查询所有员工名称，部门编号，工资。部门编号降序，工资升序排序
+			select ename,deptno,sal from emp order by deptno desc,sal;
+			select ename,deptno,sal from emp order by deptno 		
+			2.查询所有dell商品，按分类id升序，单价降序排序
+			 title            category_id  price  
+	##limit 分页查询
+			limit 跳过条数，查询条数	
+		1.查询商品表中第2页数据每页5条，查询商品名称和价格
+		2.查询所有商品，单价升序，显示第三页，每页3条数据
+		select title,price from t_item order by price limit 6,3
+		3.查询拿最高工资的员工信息
+		SELECT*FROM emp  ORDER BY sal desc LIMIT 0,1; 
+	##数值计算+ - * / %（mod（））	
+	     1.查询所有商品的单价，库存，总价
+	     		select price,num,price*num from t_item;
+	        --%和mod都是取余的作用
+	                 7%2 等效  mod(7,2)
+	##日期相关函数
+			1.获取当前日期+时间  now()
+					select now();
+			2.获取当前日期
+					select curdate();
+			3.获取当前时间				
+			    select curtime(); 
+			 4.从日期和时间中提取日期
+			 select date(now());
+			 5.从日期和时间中提取时间 
+			 select time(now());
+		--案例：查询商品创建的年月日	              		 		 	 
+			select date(created_time) from t_item;
+		6.提取年  月  日  时  分  秒 extract提取
+			-select extract(year from now())
+			-select extract(month from now())
+			-select extract(day from now())
+			-select extract(hour from now())
+			-select extract(minute from now())
+			-select extract(second from now())	
+		案例：查询入职的年份
+			select extract(year from hiredate)from emp; 
+		7.日期格式化 date_format()
+				-格式：date_format(时间,格式)
+			-%Y 4位年  1998
+			-%y 2位年  98
+			-%m 2位月   11
+			-%c 1位月
+			-%d 日 
+			-%H 24小时制
+			-%h 12小时制
+			-%i 分
+			-%s	秒
+	示例：select date_format(now(),'%Y年%m月%d日 %H时%i分%s秒');//format格式化
+	练习：查询商品的创建日期(created_time）年月日
+	SELECT DATE_FORMAT(created_time,'%Y年%m月%d日 %H时%i分%s秒') FROM t_item;
+		8.把  不规则日期  格式 转成标准格式
+			格式：str_to_date(日期字符串，格式)
+  ##ifnull()
+  		--格式：age=ifnull(x,y)  判断  x是null age=y，x不是null age=x
+  	##聚合函数
+  		-对多行数据进行合并统计
+  		-求和      sum(字段名)  比如求工资总和 sum(sal)
+  		-平均值   avg(字段名)  比如求工资平均值 avg(sal)
+  		-最大值   max(字段名)  比如求工资最大值 max(sal)
+  		-最小值   min(字段名)  比如求工资最大值 min(sal)
+  		-统计数量	count(*)  
+  		    查询得力商品的条数
+  		           select count(num)from t_item where title like '%dell%';
+    
+    
+     ##字符串相关函数
+     		1.concat(a,b)   字符串连接函数
+     		案例：查询每个员工的工资 工资后面显示元
+     		select ename,concat(sal,'元')from emp;
+     		2.char_length(str) 获取字符串的长度
+     		案例：获得每个员工姓名的长度
+     			select ename,char_length(ename)from emp;
+     			3.instr(str,subStr)获取subStri在str的位置
+     			select instr('nba','a');
+     			   locate（subStr,str）获取subStri在str的位置
+     			   	select locate('a','nba');
+     			5.insert(str,start,length,newstr)插入字符串
+     			    select insert('abcdefg',3,3,'m');结果：abmfg
+     			6.upper(str)转大、小写
+     			    select upper/lower('nBa');
+     			8.trim(str)去两端空白
+     			select trim('   abc   ')
+     		  9.left/right(str,length) 从左边截取多少个字符
+     		  select left（'abcdefg',3）;结果abc	
+     		  11.substring(str,index,length)截取字符串
+     		  12.replace(str,old,new)替换字符串
+     		        select replace('abcdefg','a','bb');结果bbbcdefg
+     		  13.repeat(str,count)重复
+     		        select repeat('aa',2);aaaa
+     		  14.reverse（str）反转
+     		  ##数学相关函数：
+     		  		1.向下取整  floor(num)
+     		  			select floor（3.75）;3
+     		  		2.四舍五入 round（num）
+     		  		round(3.288);
+     		  		round(3.2837,2);小数点后两位
+     		  3.truncate(num,m);非四舍五入
+     		       4.随机数  rand()   0-1;
+     		       	select floor(rand()*6); 
+     		  			
+     		  floor(rand()*6)+3;
+  		           
+					

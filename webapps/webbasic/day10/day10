@@ -1,0 +1,103 @@
+		javascript事件处理##计算器demo5    二级联动demo1
+		
+##事件：指页面元素状态的改变，用户在操作鼠标或者键盘时触发的动作
+   1.鼠标事件
+   	
+   		-onclick单击事件
+   		-ondblclick双击事件
+   		-onmouseover鼠标移入事件
+   		-onmouseout鼠标移出事件
+   		-onmousedown鼠标按下事件
+  			-onmouseup鼠标抬起事件
+  			
+   2.键盘事件
+   			onkeydown键盘按下
+   			onkeyup键盘抬起
+   3.状态改变事件
+   				-onload加载事件
+   				-onchange值改变事件
+   				-onfocus获取焦点事件
+   				-onblur失去焦点
+   				-onsubmit
+   				
+   4.event对象，事件对象（*****）			
+   			-事件触发后，会自动产生一个event
+   				1.获取event对象
+   					任何事件触发后都会产生一个event对象，event对象记录事件发生时的鼠标位置，
+   				键盘按键状态和触发对象（事件源）等信息
+   				1.1在html属性中直接使用event对象
+   				      <!--  在html属性中直接使用event对象-->
+	<input type="button" value="HTML_for_IE-FF-chrome" onclick="alert(event.clientX+':'+event.clientY);">
+   	                 ##虽然支持ie ff chrome，但是这种写法，是没有意义的。我们希望html代码和js代码，分离.松藕合
+   	            
+   	            
+   	            1.2在js代码块中，直接使用event对象
+   	                 				<!--  在js代码块中，直接使用event对象-->
+	<input type="button" value="js_for_chrome-IE" onclick="fn1();">
+	function fn1(){
+		alert(event.clientX+':'+event.clientY);
+	}
+					##IE浏览器和chrome。。  chrome对ie做了兼容
+				
+				
+				1.3在函数中使用event对象，必须以传参的方式。
+				<!--  在函数中使用event对象，必须以传参的方式-->
+	<input type="button" value="for_FF" onclick="fn2(event);">
+	function fn2(event){
+		alert(event.clientX+':'+event.clientY);
+	}
+	
+					##这种方式，ff ie chrome都支持，所以开发要求这种写法	
+		##通过event对象获取事件源
+		##1.IE和chrome, chrome对IE做了兼容
+		<!--  获取事件源-->
+	<input type="button" value="事件源_IE-chrome" onclick="fn3(event);">
+	function fn3(event){
+		var obj=event.srcElement;
+		console.log(obj);
+	}
+		##2.Firefox和chrome高版本IE也支持IE8.0及以下不支持			
+   			
+   
+   
+   
+   	##事件绑定
+   		1.在标签属性中，直接处理事件
+   			<input type="button" value="按钮一" onclick="fn1();">
+   		2.在js代码中动态定义，可以把html代码和js代码分离，好维护
+   		window.onload=function(){
+		var input=document.getElementsByTagName("input")[0];
+		input.onclick=fn2;//不能写括号
+	}
+	function fn2(){
+		console.log("动态定义事件绑定");
+	}
+	
+			-取消事件  onxxx="return false";
+			
+	##事件处理机制----事件冒泡
+	##如果点击input，将会依次触发input/p/div的onclick事件，这种现象称为事件冒泡
+	发生事件冒泡的要求，1：嵌套关系。2：内层和外层标签必须是同一个事件
+##取消事件的冒泡，由于浏览器厂商使用的内核不同，有两种方法取消
+		1.event.stopPropagation();
+		##总结：上边这种方法以前只支持firefox chrome.现在高版本的ie已经支持了。
+				ie8.0及其以下的版本不支持
+		
+		2.event.cancelBubble=true;
+		##总结：以前只支持IE，现在在高版本的FF和chrome中已经支持了	
+		
+###关于this的使用
+
+<div>
+	<input type="button" value="111" onclick="fn(this)">
+	<input type="button" value="222" onclick="fn(this)">
+	<input type="button" value="333" onclick="fn(this)">
+	<input type="button" value="444" onclick="fn(this)">
+</div>
+
+function fn(btn){
+		var oDiv=btn.parentNode;
+		oDiv.removeChild(btn);
+		console.log(oDiv);
+	}
+									

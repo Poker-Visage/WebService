@@ -1,0 +1,48 @@
+
+##表设计之关联关系
+           一对一：
+           		有两张表A和B，A表中有一条数据对应B表中的一条数据
+           	应用场景：用户表和用户信息扩展表，商品表和商品信息扩展表
+                如何建立关系：在从表中添加一个字段记录主表的id，用户表和用户信息
+            扩展表中，用户表为主表，信息扩展表为从表，用户表的id称为主键，从表中
+            记录主表的id的字段称为外键，主键用来表示数据的唯一性，外键用来和其他表
+            建立关系。  	
+           	     用户表：
+           	        用户id  用户名  密码
+           	     用户信息扩展表：
+           	     	用户id  昵称   年龄  性别  邮箱   地址   电话  qq
+           	     	
+           一对多：
+           		AB两张表中A表中一条数据对应B表中多条数据，并且B
+           		 中一条数据对应A表中一条数据，两张表的关系称为一对多
+           		 --应用场景：部门和员工，商品和分类等
+           		  --如何建立关系：一对多的两张表，在多的表中添加一个字段
+           		  记录另外一张表的id
+           		  
+           多对多：            
+				   AB两张表，A表中的一条数据对应B表的多条数据，同时B表中的一条数据
+				   对应A表的多条数据
+			  应用场景：老师表和学生表，用户表和角色表
+			 建立关系：需要创建一个关系表（第三个表），在关系表中记录两个表的id
+	      
+	      自关联：
+	      		在一张表中有一个字段指向当前表的id，这种称为自关联
+	      	什么时候用：当保存的数据有层机关系，并且不确定有多少层关系			  	   
+	      	  
+	      	  1.查询员工名称和对应的上级名称
+	      	select e.ename,m.ename from emp e join emp m on e.mgr=m.empno;
+	    
+	    ##连接方式和关联关系
+	    		连接方式：包括内连接和外连接（左外和右外），是指通过sql擦痕嗯寻两张表时的查询方式
+	    		关联关系：指设计表时，两张表之间存在的逻辑关系。
+	    	##案例：权限管理的表的设计
+	    			1.创建db5数据库并use，创建五张表	：user role module,用户和角色关系表u_r
+	    			用户和角色关系表u_r(uid,rid),角色和权限关系表r_m(rid,mid)
+	    			  	db5:  1.查询刘德华对应的权限
+	    			  	         select u.name,m.name from user u join u_r ur on u.id=ur.uid join r_m rm on ur.rid=rm.rid join module m on rm.mid=m.id where u.name='刘德华';
+	    			  			    2.男发帖的用户
+	    			  			    select u.name,m.name from user u join u_r ur on u.id=ur.uid join r_m rm on ur.rid=rm.rid join module m on rm.mid=m.id where m.name='男发帖';
+	    			  			    3.每个用户对应的权限
+	    			  			    select u.name,m.name from user u join u_r ur on u.id=ur.uid join r_m rm on ur.rid=rm.rid join module m on rm.mid=m.id; 
+	    			  			    
+	  ##面试  			  			    

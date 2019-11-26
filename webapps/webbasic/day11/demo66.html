@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>切换的练习</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	setInterval(function(){
+		$("p").toggleClass("switch").toggleClass("red");
+	},1000);
+});
+</script>
+<style type="text/css">
+.switch{
+background-color: #006699;
+font-size: 50px;
+color:#660099;
+}
+.red{
+color:#990066;
+}
+</style>
+</head>
+<body>
+	<p>jQuery切换的练习</p>
+	
+</body>
+</html>

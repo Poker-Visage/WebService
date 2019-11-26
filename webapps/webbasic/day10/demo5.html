@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>计算器，需要背代码</title>
+<script type="text/javascript">
+function cal(event){
+	//获取事件源
+	var obj=event.target||event.srcElement;/*target靶子*/
+	
+	//过滤掉p和div
+	if(obj.nodeName!="INPUT"){
+		return;
+	}
+	
+	//得到input的value
+	var value=obj.value;
+	//得到p的对象
+	var oP=document.getElementById("screen");
+	//console.log(oP);
+	if(value=="C"){//1.清空
+		oP.innerHTML="";
+	}else if(value=="="){//2.计算完毕在p里显示
+		//先获得p标签的内容
+		var exp=oP.innerHTML;
+	try{
+		var r=eval("("+exp+")");
+		oP.innerHTML=r;
+	}catch(e){
+		oP.innerHTML="ERROR";
+	//	console.log(e);
+	}
+		
+	}else{//3.追加在p里显示
+		oP.innerHTML+=value;
+	}
+	
+	
+	
+	
+}
+</script>
+<style type="text/css">
+	.panel{
+	border:4px solid #ddd;
+	width: 192px;
+	margin: 100px auto;
+	border-radius:3px; 
+	}
+	.panel p , .panel input{
+	font-family: "黑体";
+	font-size: 20px;
+	margin: 4px;
+	float: left;
+	border-radius: 3px; 
+	}
+	.panel p{
+	width: 122px;
+	height: 26px;
+	border: 1px solid #ddd;
+	overflow: hidden;
+	padding: 6px;
+	}
+	.panel input{
+	width: 40px;
+	height:40px;
+	}
+</style>
+</head>
+<body>
+	<div class="panel" onclick="cal(event);">
+	
+		<div>
+			<p id="screen"></p>
+			<input type="button" value="C">
+		</div>
+		<div>
+			<input type="button" value="7">
+			<input type="button" value="8">
+			<input type="button" value="9">
+			<input type="button" value="/">
+			
+			<input type="button" value="4">
+			<input type="button" value="5">
+			<input type="button" value="6">
+			<input type="button" value="*">
+			
+			<input type="button" value="1">
+			<input type="button" value="2">
+			<input type="button" value="3">
+			<input type="button" value="-">
+			
+			<input type="button" value="0">
+			<input type="button" value=".">
+			<input type="button" value="=">
+			<input type="button" value="+">
+			<div style="clear: both"></div>
+		</div>
+	</div>
+</body>
+</html>

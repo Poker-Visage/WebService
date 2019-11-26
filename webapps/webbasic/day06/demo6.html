@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>运算符的演示</title>
+<script type="text/javascript">
+var psd=parseInt(Math.random()*100);
+console.log(psd);
+ function guess(){
+	 var input=document.getElementById("num");
+	 var num=input.value;
+	 var span=document.getElementById("result");
+	 
+	 console.log(span);
+	 if(isNaN(num)){
+		 span.innerHTML="请输入数字";
+	 }else{ 
+		 if(num>psd){
+			 span.innerHTML="大了";
+		 }else if(num<psd){
+			 span.innerHTML="小了";
+		 }else if(num==psd){
+			 span.innerHTML="恭喜你，回答正确";
+		 }
+	 }
+	 }
+ 
+</script>
+</head>
+<body>
+<input type="text" id="num">
+<input type="button" value="点击"  onclick="guess();">
+= <span id="result">对比结果</span>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>学子商城，二级菜单</title>
+<style type="text/css">
+*{
+margin: 0px;
+padding: 0px;
+}
+li{
+list-style: none;
+}
+#leftsidebar_box{
+width:160px;
+}
+.menu{
+background-color: rgb(10,161,237);
+height: 36px;
+width:120px;
+color:#f5f5f5;
+font-size: 14px;
+font-weight: bold;
+font-family:"黑体";
+line-height:36px;
+background-repeat:no-repeat;
+padding-left:40px;
+background-position:10px center;
+cursor:pointer;
+margin-bottom: 10px;    
+}
+.cmenu1{
+background-image: url("../images/myOrder/myOrder.png");
+}
+.submenu{
+background-color: #fff;
+padding-left: 40px;
+padding-bottom: 15px;
+}
+.submenu>li{
+color: #808080;
+line-height: 40px;
+font-size: 12px;
+}
+.menu>img{
+float:right;
+margin-top: 12px;
+margin-right: 5px;
+}
+.dis{
+display:block;
+}
+
+</style>
+</head>
+<body>
+	<div id="leftsidebar_box">
+		<ul>
+			<li class="menu cmenu1">我的订单 <img
+				src="../images/myOrder/myOrder1.png">
+			</li>
+			<ul class="submenu dis">
+			<li>全部订单</li>
+			<li>待付款</li>
+			<li>待收款</li>
+			<li>待评价</li>
+			<li>退货退款</li>
+			</ul>
+			<li class="menu cmenu1">我的优惠券 <img
+				src="../images/myOrder/myOrder1.png">
+			</li>
+			<ul class="submenu dis">
+      <li>我的优惠券</li>
+      </ul>
+			<li class="menu cmenu1">收货地址 <img
+				src="../images/myOrder/myOrder1.png">
+			</li>
+			<ul class="submenu dis">
+      <li>地址管理</li>
+      </ul>
+			<li class="menu cmenu1">帐号管理 <img
+				src="../images/myOrder/myOrder1.png">
+			</li>
+			<ul class="submenu dis">
+      <li>我的信息</li>
+       <li>安全管理</li>
+      </ul>
+		</ul>
+	</div>
+</body>
+</html>

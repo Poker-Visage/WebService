@@ -1,0 +1,191 @@
+##window 常用属性
+		1.location 地址对象
+	包含当前页面的URL的信息，常用于获取和改变当前浏览器的网址属性，href
+		location。href=url；
+		reload();重新载入当前网页（等同于F5）。
+		
+		2.screen 1.包含客户端显示屏幕的信息2.常用于获取屏幕的分辨率和色彩
+			 1.width/height屏幕宽、高		
+			 2.availWinder/availHeight 屏幕 可用宽和可用高
+			 	  宽相等，可用高比高小（还有window任务栏的高度）
+	
+		3.history 历史记录。包含用户在浏览器窗口中访问过的URL
+			  length属性，浏览器历史列表中的URL数量
+			  
+			  方法
+			  	1.back()返回
+			  	2.forward()前进 	 
+			  	3.go(x);跳转页面x，0是当前页，1下一页
+			  	
+		4.	navigator，包含浏览器相关信息，
+				
+				userAgent属性，当前浏览器的版本  	 
+				
+##DOM的操作
+		DOM提供了哪些操作
+			一.查找节点
+			二.读取节点信息
+			三.修改节点信息    ********************
+			四.创建新节点
+			五.删除节点
+			
+			
+		一.查找节点	
+			//页面加载事件，页面加载完毕之后被激发
+window.onload=function(){//onload装置 （类似于内部类）
+	var p1=document.getElementById("p1");
+	var pa=document.getElementsByTagName("p");//tag标签
+	var p2=pa[1];
+	console.log(pa);
+	console.log(p2);
+	//console.log(p1);
+	//console.log(p1.nodeName);//node节点
+	//console.log(p1.nodeType);
+	
+##总结：nodeType返回值，对应了节点的类型
+		1--元素节点
+		2--属性节点
+		3--文本节点
+		8--注释节点
+		9--文档节点	 
+		nodeName和nodeType，在写js框架时用的非常多。正常开发，很少使用			
+			 
+			 二.读取节点信息（读取节点值）双标签叫内容，单标签叫值。所有的双标签都有内容，一般表单中的控件，数据称之为值。
+		input select（下拉选） textarea（文本域）都有value	 
+		
+		1.innerHTML
+		2.innerText
+				var p1=document.getElementById("p1");
+	console.log(p1.innerHTML);
+	console.log(p1.innerText);
+	p1.innerText="1.<u>读写</u>节点";
+	<body>
+	<p id="p1">1.<b>读写</b>节点</p>
+	</body>
+##总结：	1.innerHTML，认识标签
+		2.innerText，不认识标签，会把标签当成文本
+		3 btn.value 读写值                                                ？？？？？？？？？？
+		4.读写节点属性
+			4.1通过方法读写属性**
+			4.2通过标准属性读写属性**
+			4.3通过不标准属性读写属性	，只有高版本浏览器才支持0
+			
+			 //1.通过方法读写属性
+	var oImg=document.getElementsByTagName("img")[0];
+	console.log(oImg.getAttribute("src"));//Attribute属性
+	oImg.setAttribute("src","../img/02.png");
+	//2.通过标准的属性名 读写属性
+	//className id style
+	var op=document.getElementsByTagName("p")[0];
+	console.log(op.style.color);
+	op.style.fontSize="50px";
+	//3.通过不标准属性读写，不推荐
+	//a.href   img.src  不标准属性换做方法读写,不建议用
+	console.log(oImg.src);	 
+##总结：
+		1.不标准的属性简易使用方法处理
+		2.标准属性中的style，是内联样式。除了学习和测试不建议使用	
+		
+		鼠标悬停和鼠标离开事件
+			onmouseover鼠标悬停
+			onmouseout 鼠标离开
+				
+##1.查询节点
+		1.1如果想要操作HTML元素，必须先要找到该元素
+		1.2查询节点方法
+			1.21通过id查询
+			1.22通过层次（节点关系）查询
+			1.23通过标签名查询
+			1.24通过name属性查询
+			
+			<script type="text/javascript">
+window.onload=function(){
+	//1.根据id查询
+	var gz=document.getElementById("gz");
+	//2.根据标签层次查询（节点关系）
+	//2.1查询父级节点
+//	console.log(gz.parentNode);/*父级节点*/
+	//2.2查询子节点
+	var oUl=document.getElementsByTagName("ul")[0];
+	console.log(oUl.childNodes);/*每个li和li后边的空格（不常用）*/
+	//把查询节点的方位缩小到内部（重点掌握）
+	var oLis=oUl.getElementsByTagName("li");
+	//console.log(oLis);
+	//2.3查询兄弟节点
+	//某节点.父亲.孩子们[index]
+	var gz=document.getElementById("gz");
+	var jms=gz.parentNode.getElementsByTagName("li")[4];
+	console.log(jms);
+	//2.4根据name属性查询节点
+	//一般用于查询一组单选/多选
+	var radios=document.getElementsByName("gender");
+	console.log(radios);
+}
+</script>
+<body>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>佳木斯</li>
+		<li>葫芦岛</li>
+	</ul>
+	<div>
+		<input type="radio" name="gender">男
+		<input type="radio" name="gender">女
+	</div>
+</body>
+						
+			三.修改节点信息
+			四.创建新节点
+	document.createElement(TagName);创建标签   create创建
+		返回值就是这个标签的对象
+		
+		最终目的是把这个新标签对象，挂到dom树上
+		<script type="text/javascript">
+	window.onload=function(){
+		
+	}
+	function fn1(){
+		var oLi=document.createElement("li");
+		oLi.innerHTML="重庆";
+		var oUl=document.getElementsByTagName("ul")[0];
+		oUl.appendChild(oLi);
+		}
+	function fn2(){
+		var oLi=document.createElement("li");
+		oLi.innerHTML="洛阳";
+		//插入需要父级对象，和弟弟对象Insert title here
+		var oUl=document.getElementsByTagName("ul")[0];                day11~demo4
+		var gz=document.getElementById("gz");
+		//把新节点插入到父亲下级，弟弟之前
+		oUl.insertBefore(oLi,gz);//insert插入，Before在。。。之前
+		
+	}
+</script>
+</head>
+<body>
+	<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>佳木斯</li>
+		<li>葫芦岛</li>
+	</ul>
+	<div>
+		<input type="button" value="追加" onclick="fn1()">
+		<input type="button" value="插入" onclick="fn2()">
+	</div>
+</body>
+			
+			五.删除节点
+			function fn3(){
+		//需要父级元素对象和要删除的元素对象
+		var oUl=document.getElementsByTagName("ul")[0];
+		var gz=document.getElementById("gz");
+		//通过父级对象删除孩子
+		oUl.removeChild(gz);
+	}
+	####总结，我们需要父级去删除子元素（gz想自杀怎么办）	  

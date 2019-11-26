@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>插入练习</title>
+<script type="text/javascript">
+	function fn1(){
+		var oUl=document.getElementsByTagName("ul")[0];
+		var oLi=document.createElement("li");
+		oLi.innerHTML="重庆";
+		oUl.appendChild(oLi);
+		
+	}
+	function fn2(){
+		var oUl=document.getElementsByTagName("ul")[0];
+		var oLi=document.createElement("li");
+		var gz=document.getElementById("gz");
+		oLi.innerHTML="洛阳";
+		oUl.insertBefore(oLi,gz);
+	}
+	function fn3(){
+		var oUl=document.getElementsByTagName("ul")[0];
+		var gz=document.createElementById("gz");
+		oUl.removeChild(gz);
+	}
+</script>
+</head>
+<body>
+<ul>
+		<li>北京</li>
+		<li>上海</li>
+		<li id="gz">广州</li>
+		<li>深圳</li>
+		<li>佳木斯</li>
+		<li>葫芦岛</li>
+	</ul>
+	<div>
+		<input type="button" value="追加" onclick="fn1()">
+		<input type="button" value="插入" onclick="fn2()">
+		<input type="button" value="删除" onclick="fn3()">
+	</div>
+</body>
+</html>

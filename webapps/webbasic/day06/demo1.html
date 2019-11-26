@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>js的使用</title>
+<!--script手写体  function函数 alert警告 console控制台 log日志 click单击 -->
+<script type="text/javascript">
+	/*把js代码写到script标签内部*/
+	/*script标签可以放到html的任何位置*/
+	/*但通常放到head标签中*/
+
+	/*function是关键字，用来声明函数*/
+	/*fn1是函数名，小括号内可以声明参数*/
+	/*js中函数都是公有的，不需要写修饰符*/
+	/*函数不需要声明返回值*/
+	/*函数体中没写return，函数调用时默认返回值undefined*/
+	function fn1() {
+		alert("我是入式js的使用");
+	}
+	function fn2() {
+		alert("我是验证返回值");
+		return 123;
+	}
+</script>
+<script type="text/javascript" src="my.js"></script>
+</head>
+<body>
+	<!--  事件：用户在作出某种操作时，会调出js代码-->
+	<!--  事件就是js调用时机，比如单击按钮等-->
+	<!-- 1.事件定义式，在定义事件时，直接写js代码 -->
+	<input type="button" value="事件定义式" onclick="alert('我被单击了');">
+	<!--onclick单击事件  -->
+
+	<!-- 嵌入式 -->
+	<input type="button" value="嵌入式" onclick="fn1();">
+	<input type="button" value="嵌入式1" onclick="fn1();">
+
+	<input type="button" value="文件调用式" onclick="fn3();">
+</body>
+</html>

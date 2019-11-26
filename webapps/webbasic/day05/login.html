@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>盗版学子登录页面</title>
+<link rel="stylesheet" href="login.css">
+<script type="text/javascript" src="login.js"></script>
+</head>
+<body>
+	<header>
+		<a href="#"><img src="../images/header/logo.png"></a> <span>欢迎登录</span>
+	</header>
+	<div class="from-panel">
+		<form action="http://www.tmooc.cn/web/index_new" onsubmit="return checkUser()+checkPwd()==2">
+			<h2>
+				登录学子商城 <a href="#">新用户注册</a>
+			</h2>
+			<div class="field">
+				<input type="text" placeholder="请输入用户名"  id="user" onblur="checkUser();" > 
+				<img src="../images/login/yhm.png"><span id="msg_user">用户名输入错误</span>
+			</div>
+			<div class="field">
+				<input type="text" placeholder="请输入密码" id="pwd" onblur="checkPwd();" >
+				<img src="../images/login/mm.png"><span id="msg_pwd">密码格式错误</span>
+			</div>
+			<div class="checkbox">
+				<input type="checkbox" id="save"> <label for="save">自动登录</label>
+				<a href="#">忘记密码?</a>
+			</div>
+			<div class="btn">
+				<input type="submit" value="登录">
+			</div>
+		</form>
+	</div>
+	<ul class="server">
+		<li><img src="../images/footer/icon1.png">
+			<p>品质保障</p></li>
+		<li><img src="../images/footer/icon2.png">
+			<p>私人定制</p></li>
+		<li><img src="../images/footer/icon3.png">
+			<p>学员特供</p></li>
+		<li><img src="../images/footer/icon4.png">
+			<p>专属特权</p></li>
+	</ul>
+	
+</body>
+</html>

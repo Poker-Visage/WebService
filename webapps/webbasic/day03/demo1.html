@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>样式优先级测试</title>
+<link rel="stylesheet" href="style01.css">
+<style type="text/css">
+h2{
+color:#00f;
+}
+#h{
+color:#f00;
+}
+.col{
+color: #006699;
+}
+.w100{
+border:1px solid red;
+width: 200px;
+}
+</style>
+</head>
+<body>
+<h2>css优先级演示</h2>
+<h3 id="h">id选择器</h3>
+<h3 id="h2">id选择器</h3>
+<h3 id="h3">id选择器</h3>
+
+<h2 class="col w100">类选择器</h2>
+<p class="col w100">类选择器</p>
+<span class="col w100">类选择器</span>
+</body>
+</html>

@@ -1,0 +1,118 @@
+
+														零碎知识
+			
+			  1、HTML-用来勾嘞出网页的结构和内容---- 骨架
+
+      2、CSS-样式表-用来美化网页-（皮肤-化妆-美颜-整容）
+
+	3、javaScript-让网页呈现出动态的数据和效果
+
+	4、jQUery-是js的框架，提高了javascript的开发效率											
+														
+														
+														
+          1、块级元素，自己独占一行
+		hn p ul ol li header footer nav div
+	2、行内元素，可以和其他行内元素处于同一行		
+		span  i/em定义斜体   <b></b>/<strong></strong>定义粗体  <u></u>下划线  
+		<s></s>/<del></del>删除线
+###	行内元素的空格折叠现象，（写代码时不管连写多少空格，回车，都会显示成一个空格）用实体引用解决
+              实体引用：&nbsp：（写一个代表一个空格）  <br>写一个代表一个回车
+             
+        单元格  边框与内容的距离cellpadding=“”
+	2：单元格之间的距离 cellspacing=“”      
+	
+	##form表单主要属性
+	##action 表单提交url
+	##method  表单提交数据的方式get/post   post登记
+	#placeholder文本提示（类似背景）占位符	（请输入密码）
+	
+	##隐藏域 type="hidden"
+	文本域（type="textarea"）文本区域
+	###下拉选select（下拉选择城市）  选择option
+	
+	$$$6:伪类选择器：-在一系列动作中添加某种样式
+1 ：hover--鼠标悬停和鼠标离开                                                                    ******
+###总结：选择器（派生，子类）写的越具体，优先级越高
+
+##总结1：一个div如果不设置宽度，默认占父容器宽度的100%
+	总结2：一个div如果不设置高度，默认占父容器高度的0px；如果有内容，
+	    内容多高div就撑起多高	
+	    
+	    background-repeat 背景图片的平铺方式
+	    background-repeat:no-repeat;不平铺
+		background-repeat：repeat；平铺
+		background-repeat：repeat-x/y；横/纵 向平铺
+	    
+	background-position：背景图片的位置
+	 center/top/bottom/left/right/具体数值
+     background-position：x轴 y轴；
+     	background-position：center center；x、y轴方向居中
+     	
+     	cursor: pointer;/*鼠标悬停的时候变成手*/ cursor(光标) pointer指示物   mouse老鼠   ************************
+     	
+     	font-style：字体样式    normal（普通样式）  italic（斜体）                               day04
+     	position：fixed ；相对窗口定位（固定的）
+     	
+     	3.获取指定的字符（串）
+	    str.charAt(index);                   后边一个数
+	    5.获取子字符串
+			str.substring(star,[end]);
+			var str="abcdefghi";
+			var str1=str.substring(2,4);        后边两个数
+			
+		toFixed（和toString（）类似）
+		
+		2.正则对象的方法reg.xxx(str);  不断找出和包含
+					   
+			//var str="you can you up,no can no bi bi";
+			//var reg=/no/g;
+		//reg.exec(str); 从str中找到匹配正则的子串
+		//在普通模式下，返回第一个符合的子串                                                      不断找出
+		//全局模式下，第n次执行，返回符合要求的第n个子串
+		/* console.log(reg.exec(str));
+		console.log(reg.exec(str)); */
+
+		//reg.test(str);
+		//判断str中是否包含reg                                          包含
+		//console.log(reg.test(str));
+								
+   3.字符串匹配正则的方法 str.xxx(reg);	  替换，找出和找到
+		1.str.replace(reg,"");将str中的reg匹配的所有子串都替换成目标子串        替换
+		2.str.match(reg);从str中找出和reg匹配的子串,  返回值是数组                     找出     
+		3.str.search(reg);从str中搜索reg，返回值是一个int								 找到	  
+	
+	##事件：指页面元素状态的改变，用户在操作鼠标或者键盘时触发的动作
+   1.鼠标事件
+   	
+   		-onclick单击事件
+   		-ondblclick双击事件
+   		-onmouseover鼠标移入事件
+   		-onmouseout鼠标移出事件
+   		-onmousedown鼠标按下事件
+  			-onmouseup鼠标抬起事件
+  			
+   2.键盘事件
+   			onkeydown键盘按下
+   			onkeyup键盘抬起
+   3.状态改变事件
+   				-onload加载事件
+   				-onchange值改变事件
+   				-onfocus获取焦点事件
+   				-onblur失去焦点
+   				-onsubmit               
+   				
+   				1.周期性的定时器，以一定的时间间隔执行代码，循环往复
+ 		setInterval(exp,time);
+ 		 clearInterval(ID);停止定时器。
+ 		        一次性定时器（延迟执行）setTimeout(exp,time);
+ 		        clearTimeout(id);停止                  
+44444	jQuery:                                  day11
+	   	3.5状态过滤器
+		  $("input:checked")
+		  $("input:disabled")//disabled失效的
+		  
+		  3.6表单过滤器
+		  		$(":text")		
+		  				
+   				

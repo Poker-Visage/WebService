@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>jQuery事件动态绑定+获取event 取消冒泡</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$(":button:first").click(function(event){//???????????
+			console.log(event);
+	
+		});
+		$(":button:eq(1)").click(function(){
+			alert("button");
+			return false;//取消冒泡
+		});
+		$("p:first").click(function(){
+			alert("p");
+		});
+		$("div:first").click(function(){
+			alert("div");
+		});
+	});
+</script>
+<style type="text/css">
+div{
+width: 200px;
+height: 200px;
+background: #f00;
+}
+p{
+width: 100px;
+height: 100px;
+background: #00f;
+}
+</style>
+</head>
+<body>
+	<input type="button" value="点点我试试">
+	<div>
+		<p>
+			<input type="button" value="我要冒泡了">
+		</p>
+	</div>
+</body>
+</html>

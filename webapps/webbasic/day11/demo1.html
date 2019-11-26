@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>第一个jq的demo</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script><!--负责导入  -->
+<script type="text/javascript">
+function bigger(){
+	//获取p的字号
+	var size=$("p").css("font-size");
+	//把16px变成可以计算的数字，去掉单位
+	size=size.replace("px","");
+	console.log(size);
+	//字号加大号，设置p标签的字号
+	$("p").css("font-size",++size +"px");
+}
+</script>
+
+</head>
+<body>
+	<input type="button" value="+" onclick="bigger()">
+	<p>jQuery是一个JavaScript库</p>
+	<p>jQuery极大简化了javascript编程</p>
+	<p>jQuery非常容易学</p>
+</body>
+</html>

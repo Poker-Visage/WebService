@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>总结：疯狂的呆呆兵</title>
+<script type="text/javascript" src="../jquery-3.1.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("img").hover(function(){
+			$(this).animate({'top':'1000px'},500)
+			.animate({'left':'1000px'},500)
+			.animate({'top':'0px'},400)
+			.animate({'left':'0px'},400)
+			.animate({'top':'500px'},300)
+			.animate({'left':'500px'},300)
+			.animate({'top':'0px'},200)
+			.animate({'left':'0px'},200)
+			.animate({'top':'500px'},100)
+			.animate({'left':'0px'},100)
+		},function(){
+			$(this).animate({'left':'0px'},500);
+		});
+	});
+</script>
+<style type="text/css">
+	img{
+	position: relative;
+	}
+</style>
+</head>
+<body>
+	<div>
+		<img alt="" src="../img/06.png">
+		<img alt="" src="../img/07.png">
+		<img alt="" src="../img/08.png">
+		<img alt="" src="../img/09.png">
+		<img alt="" src="../img/10.png">
+		<img alt="" src="../img/11.png">
+		<img alt="" src="../img/12.png">
+		<img alt="" src="../img/13.png">
+	</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+   <head>
+      <title>注册页面</title>
+      <meta charset="UTF-8">
+   </head>
+   <body>
+   <center>
+      <h1>欢迎注册</h1>
+      <form method="get" action="reg">
+      <!-- 
+      form表单
+      form标签中要包含若干的输入框（要求
+      用户提交的数据）。
+      form有两个重要的属性：
+      method：提交表单的方式，有两种：GET，POST
+      get形式是将所有form中用户输入的信息拼接在地址栏中提交给服务端（纯文本信息）
+      post形式是将内容包含在请求的消息正文中提交到服务端。若提交的
+      内容不是纯文本信息，比如包含上传附件等信息，（不光纯文本信息）一定要使用POST
+      
+      action：指定该表单信息提交的地址
+       -->
+            <table border="1">
+            <tr>
+            <td>用户名</td>
+            <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+            <td>密码</td>
+            <td><input type="password" name=password></td>
+            </tr>
+            <tr>
+            <td>昵称</td>
+            <td><input type="text" name="nickname"></td>
+            </tr>
+            <tr>
+            <td>年龄</td>
+            <td><input type="text" name="age"></td>
+            </tr>
+            <tr>
+            <td colspan="2" align="center">
+            <input type="submit" value="注册">
+            </td>
+            </tr>
+            
+            </table>
+            </form>
+   </center>
+   </body>
+</html>
